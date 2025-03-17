@@ -1,7 +1,0 @@
-Base path: 'C:/Program Files/Unity/Hub/Editor/6000.0.37f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/6000.0.37f1/Editor/Data/PlaybackEngines'
-Cmd: initializeCompiler
-
-Cmd: disassembleShader
- name=UI/Default platform=d3d11 type=17 mask=6 insize=646 outsize=1434 ok=1
-
-Cmd: shutdown

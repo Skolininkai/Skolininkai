@@ -6,8 +6,8 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638746803024660657
-    m_Hash: 2987663501
+      ticks: 638777233183811417
+    m_Hash: 3443086720
   m_LockFileStatus:
     m_FilePath: C:/Users/Tautvydas/Desktop/Uni/Semester 4/Programu indzinerijos projektas/Skolininkai/My
       project/Packages/packages-lock.json
@@ -15,8 +15,8 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638746803316533990
-    m_Hash: 3699360171
+      ticks: 638777233183846864
+    m_Hash: 1916009384
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -234,8 +234,10 @@ m_ResolvedPackages:
     - 2.5.1
     - 2.5.2
     - 2.6.0
+    - 2.7.1
     compatible:
     - 2.6.0
+    - 2.7.1
     recommended: 2.6.0
     deprecated: []
   dependencies: []
@@ -325,6 +327,129 @@ m_ResolvedPackages:
     compatibilityLevel: 0
     minimumPackageVersion: 2.6.0
     minimumUnityVersion: 2021.3.0f1
+- packageId: com.unity.formats.fbx@5.1.3
+  testable: 0
+  isDirectDependency: 1
+  version: 5.1.3
+  source: 1
+  resolvedPath: C:\Users\Tautvydas\Desktop\Uni\Semester 4\Programu indzinerijos projektas\Skolininkai\My
+    project\Library\PackageCache\com.unity.formats.fbx@db39de05b0db
+  assetPath: Packages/com.unity.formats.fbx
+  name: com.unity.formats.fbx
+  displayName: FBX Exporter
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: "The FBX Exporter package enables round-trip workflows between Unity
+    and 3D modeling software. Send geometry, Lights, Cameras, and animation from
+    Unity to Autodesk\xAE Maya\xAE, Autodesk\xAE Maya LT\u2122, or Autodesk\xAE 3ds
+    Max\xAE, and back to Unity again, with minimal effort."
+  errors: []
+  versions:
+    all:
+    - 2.0.1-preview.2
+    - 2.0.1-preview.3
+    - 2.0.1-preview.4
+    - 2.0.1-preview.5
+    - 2.0.1-preview.11
+    - 2.0.2-preview.1
+    - 2.0.3-preview.3
+    - 3.0.0-preview.2
+    - 3.0.1-preview.2
+    - 3.1.0-preview.1
+    - 3.2.0-preview.2
+    - 3.2.1-preview.2
+    - 4.0.0-pre.1
+    - 4.0.0-pre.4
+    - 4.0.1
+    - 4.1.0-pre.2
+    - 4.1.0
+    - 4.1.1
+    - 4.1.2
+    - 4.1.3
+    - 4.2.0-pre.1
+    - 4.2.0
+    - 4.2.1
+    - 5.0.0-pre.1
+    - 5.0.0
+    - 5.1.0-pre.1
+    - 5.1.0
+    - 5.1.1
+    - 5.1.2
+    - 5.1.3
+    compatible:
+    - 5.1.1
+    - 5.1.2
+    - 5.1.3
+    recommended: 5.1.3
+    deprecated: []
+  dependencies:
+  - name: com.autodesk.fbx
+    version: 5.1.1
+  - name: com.unity.timeline
+    version: 1.7.1
+  resolvedDependencies:
+  - name: com.autodesk.fbx
+    version: 5.1.1
+  - name: com.unity.timeline
+    version: 1.8.7
+  - name: com.unity.modules.audio
+    version: 1.0.0
+  - name: com.unity.modules.director
+    version: 1.0.0
+  - name: com.unity.modules.animation
+    version: 1.0.0
+  - name: com.unity.modules.particlesystem
+    version: 1.0.0
+  keywords:
+  - fbx
+  - animation
+  - modeling
+  - maya
+  - max
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 638732425792020000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.formats.fbx@5.1/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.com/Unity-Technologies/com.unity.formats.fbx.git
+    revision: 1dc43fa4b17f9e2d73204dbdd2463d060ddeb36c
+    path: 
+  unityLifecycle:
+    version: 5.1.1
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Fixed\n- Fixed an indentation issue in FBX Exporter
+    Project Settings that was preventing straightforward toggling of checkboxes."}'
+  assetStore:
+    productId: 
+  fingerprint: db39de05b0dbacefb3aa3035d97d497649e2e711
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 5.1.1
+    minimumUnityVersion: 2020.3.0a1
 - packageId: com.unity.ide.rider@3.0.31
   testable: 0
   isDirectDependency: 1
@@ -626,9 +751,11 @@ m_ResolvedPackages:
     - 1.11.2
     - 1.12.0
     - 1.13.0
+    - 1.13.1
     compatible:
     - 1.12.0
     - 1.13.0
+    - 1.13.1
     recommended: 1.12.0
     deprecated: []
   dependencies:
@@ -824,6 +951,196 @@ m_ResolvedPackages:
   editorCompatibility:
     compatibilityLevel: 0
     minimumPackageVersion: 1.0.0
+    minimumUnityVersion: 6000.0.0a1
+- packageId: com.unity.probuilder@6.0.4
+  testable: 0
+  isDirectDependency: 1
+  version: 6.0.4
+  source: 1
+  resolvedPath: C:\Users\Tautvydas\Desktop\Uni\Semester 4\Programu indzinerijos projektas\Skolininkai\My
+    project\Library\PackageCache\com.unity.probuilder@a2827f523e21
+  assetPath: Packages/com.unity.probuilder
+  name: com.unity.probuilder
+  displayName: ProBuilder
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: 'Build, edit, and texture custom geometry in Unity. Use ProBuilder
+    for in-scene level design, prototyping, collision meshes, all with on-the-fly
+    play-testing.
+
+
+    Advanced features include UV editing, vertex colors, parametric
+    shapes, and texture blending. With ProBuilder''s model export feature it''s easy
+    to tweak your levels in any external 3D modelling suite.'
+  errors: []
+  versions:
+    all:
+    - 3.0.0
+    - 3.0.1
+    - 3.0.2
+    - 3.0.3
+    - 3.0.6
+    - 3.0.8
+    - 3.0.9
+    - 3.10.1
+    - 4.0.2
+    - 4.0.3
+    - 4.0.4
+    - 4.0.5
+    - 4.1.0
+    - 4.1.2
+    - 4.2.1
+    - 4.2.2-preview.1
+    - 4.2.2-preview.2
+    - 4.2.3
+    - 4.2.4-preview.0
+    - 4.3.0-preview.0
+    - 4.3.0-preview.1
+    - 4.3.0-preview.2
+    - 4.3.0-preview.4
+    - 4.3.0-preview.6
+    - 4.3.0-preview.7
+    - 4.3.0-preview.8
+    - 4.3.0-preview.9
+    - 4.3.1
+    - 4.4.0-preview.1
+    - 4.4.0
+    - 4.5.0
+    - 4.5.2
+    - 5.0.0-pre.7
+    - 5.0.0-pre.10
+    - 5.0.1
+    - 5.0.3
+    - 5.0.4
+    - 5.0.6
+    - 5.0.7
+    - 5.1.0
+    - 5.1.1
+    - 5.2.0
+    - 5.2.2
+    - 5.2.3
+    - 6.0.1-pre.1
+    - 6.0.1-pre.2
+    - 6.0.1
+    - 6.0.2
+    - 6.0.3
+    - 6.0.4
+    compatible:
+    - 6.0.4
+    recommended: 6.0.4
+    deprecated: []
+  dependencies:
+  - name: com.unity.shadergraph
+    version: 17.0.2
+  - name: com.unity.modules.imgui
+    version: 1.0.0
+  - name: com.unity.modules.physics
+    version: 1.0.0
+  - name: com.unity.settings-manager
+    version: 1.0.3
+  resolvedDependencies:
+  - name: com.unity.shadergraph
+    version: 17.0.3
+  - name: com.unity.render-pipelines.core
+    version: 17.0.3
+  - name: com.unity.burst
+    version: 1.8.19
+  - name: com.unity.mathematics
+    version: 1.3.2
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.ugui
+    version: 2.0.0
+  - name: com.unity.modules.ui
+    version: 1.0.0
+  - name: com.unity.modules.imgui
+    version: 1.0.0
+  - name: com.unity.collections
+    version: 2.5.1
+  - name: com.unity.test-framework
+    version: 1.4.5
+  - name: com.unity.ext.nunit
+    version: 2.0.5
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.4
+  - name: com.unity.test-framework.performance
+    version: 3.0.3
+  - name: com.unity.modules.physics
+    version: 1.0.0
+  - name: com.unity.modules.terrain
+    version: 1.0.0
+  - name: com.unity.rendering.light-transport
+    version: 1.0.1
+  - name: com.unity.searcher
+    version: 4.9.2
+  - name: com.unity.settings-manager
+    version: 2.0.1
+  keywords:
+  - 3d
+  - model
+  - mesh
+  - modeling
+  - geometry
+  - shape
+  - cube
+  - blender
+  - max
+  - maya
+  - fbx
+  - obj
+  - level
+  - design
+  - block
+  - greybox
+  - graybox
+  - whitebox
+  - prototype
+  - probuilder
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 638621037625580000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.probuilder@6.0/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.com/Unity-Technologies/com.unity.probuilder.git
+    revision: ec91db85925cba22a53ee72999806d964005e7df
+    path: 
+  unityLifecycle:
+    version: 6.0.4
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Changes\n\n- [PBLD-169] \"Edit Vertices/Edges/Faces\"
+    shortcuts now automatically enter the ProBuilder context.\n- [PBLD-167] Removed
+    \"Toggle ProBuilder Context\" shortcut - the built-in \"Cycle Tool Modes\" shortcut
+    should be used instead."}'
+  assetStore:
+    productId: 
+  fingerprint: a2827f523e21ea251861dac290125410ba4e560b
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 6.0.4
     minimumUnityVersion: 6000.0.0a1
 - packageId: com.unity.render-pipelines.universal@17.0.3
   testable: 0
@@ -1253,6 +1570,7 @@ m_ResolvedPackages:
     - 1.7.4
     - 1.7.5
     - 1.7.6
+    - 1.7.7
     - 1.8.0
     - 1.8.1
     - 1.8.2
@@ -1486,9 +1804,11 @@ m_ResolvedPackages:
     - 1.9.2
     - 1.9.4
     - 1.9.5
+    - 1.9.6
     compatible:
     - 1.9.5
-    recommended: 1.9.5
+    - 1.9.6
+    recommended: 1.9.6
     deprecated:
     - 1.8.0-pre.1
   dependencies:
@@ -4570,6 +4890,155 @@ m_ResolvedPackages:
     compatibilityLevel: 0
     minimumPackageVersion: 17.0.3
     minimumUnityVersion: 6000.0.0a1
+- packageId: com.unity.settings-manager@2.0.1
+  testable: 0
+  isDirectDependency: 0
+  version: 2.0.1
+  source: 1
+  resolvedPath: C:\Users\Tautvydas\Desktop\Uni\Semester 4\Programu indzinerijos projektas\Skolininkai\My
+    project\Library\PackageCache\com.unity.settings-manager@56a930affa1e
+  assetPath: Packages/com.unity.settings-manager
+  name: com.unity.settings-manager
+  displayName: Settings Manager
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: asset
+  description: A framework for making any serializable field a setting, complete
+    with a pre-built settings interface.
+  errors: []
+  versions:
+    all:
+    - 0.1.0-preview.4
+    - 0.1.0-preview.8
+    - 1.0.0
+    - 1.0.1
+    - 1.0.2
+    - 1.0.3
+    - 2.0.0
+    - 2.0.1
+    compatible:
+    - 2.0.1
+    recommended: 2.0.1
+    deprecated: []
+  dependencies: []
+  resolvedDependencies: []
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 637744099390000000
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.com/Unity-Technologies/com.unity.settings-manager.git
+    revision: 9b7c12d04ef880168151c127fd6b37b5931197dc
+    path: 
+  unityLifecycle:
+    version: 2.0.1
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: 
+  assetStore:
+    productId: 
+  fingerprint: 56a930affa1e4462d3595b5c19a1c2a4bf2015d2
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 2.0.1
+    minimumUnityVersion: 2018.4.0a1
+- packageId: com.autodesk.fbx@5.1.1
+  testable: 0
+  isDirectDependency: 0
+  version: 5.1.1
+  source: 1
+  resolvedPath: C:\Users\Tautvydas\Desktop\Uni\Semester 4\Programu indzinerijos projektas\Skolininkai\My
+    project\Library\PackageCache\com.autodesk.fbx@5797ff6b31c7
+  assetPath: Packages/com.autodesk.fbx
+  name: com.autodesk.fbx
+  displayName: Autodesk FBX SDK for Unity
+  author:
+    name: Unity
+    email: 
+    url: 
+  category: 
+  type: 
+  description: "This package provides Unity C# bindings to the Autodesk\xAE FBX\xAE
+    SDK."
+  errors: []
+  versions:
+    all:
+    - 5.1.1
+    compatible:
+    - 5.1.1
+    recommended: 5.1.1
+    deprecated: []
+  dependencies: []
+  resolvedDependencies: []
+  keywords:
+  - fbx
+  - animation
+  - modeling
+  - maya
+  - max
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 0
+  isAssetStorePackage: 0
+  datePublishedTicks: 0
+  documentationUrl: https://docs.unity3d.com/Packages/com.autodesk.fbx@5.1/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.com/Unity-Technologies/com.autodesk.fbx.git
+    revision: dccfc2a79ac7abfe7bd6f91f713f990f2fedd141
+    path: 
+  unityLifecycle:
+    version: 5.1.1
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"* Update FBX SDK to 2020.3.4.\n* Add support for Windows
+    ARM64."}'
+  assetStore:
+    productId: 
+  fingerprint: 5797ff6b31c7c66189bffe1adc9cbf0ad5a9cbbf
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 5.1.1
+    minimumUnityVersion: 2020.3.0a1
 - packageId: com.unity.searcher@4.9.2
   testable: 0
   isDirectDependency: 0
@@ -5064,10 +5533,14 @@ m_ResolvedPackages:
     - 2.5.0-pre.2
     - 2.5.1
     - 2.5.2
+    - 2.5.3
+    - 2.6.0-exp.2
     compatible:
     - 2.5.1
     - 2.5.2
-    recommended: 2.5.2
+    - 2.5.3
+    - 2.6.0-exp.2
+    recommended: 2.5.3
     deprecated: []
   dependencies:
   - name: com.unity.burst

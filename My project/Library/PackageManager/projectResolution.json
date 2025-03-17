@@ -29,6 +29,16 @@
       "source": "registry",
       "testable": false
     },
+    "com.unity.formats.fbx@5.1.3": {
+      "name": "com.unity.formats.fbx",
+      "displayName": "FBX Exporter",
+      "resolvedPath": "C:\\Users\\Tautvydas\\Desktop\\Uni\\Semester 4\\Programu indzinerijos projektas\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.formats.fbx@db39de05b0db",
+      "fingerprint": "db39de05b0dbacefb3aa3035d97d497649e2e711",
+      "editorCompatibility": "2020.3.0a1",
+      "version": "5.1.3",
+      "source": "registry",
+      "testable": false
+    },
     "com.unity.ide.rider@3.0.31": {
       "name": "com.unity.ide.rider",
       "displayName": "JetBrains Rider Editor",
@@ -67,6 +77,16 @@
       "editorCompatibility": "6000.0.0a1",
       "version": "1.0.0",
       "source": "builtin",
+      "testable": false
+    },
+    "com.unity.probuilder@6.0.4": {
+      "name": "com.unity.probuilder",
+      "displayName": "ProBuilder",
+      "resolvedPath": "C:\\Users\\Tautvydas\\Desktop\\Uni\\Semester 4\\Programu indzinerijos projektas\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.probuilder@a2827f523e21",
+      "fingerprint": "a2827f523e21ea251861dac290125410ba4e560b",
+      "editorCompatibility": "6000.0.0a1",
+      "version": "6.0.4",
+      "source": "registry",
       "testable": false
     },
     "com.unity.render-pipelines.universal@17.0.3": {
@@ -429,6 +449,26 @@
       "editorCompatibility": "6000.0.0a1",
       "version": "17.0.3",
       "source": "builtin",
+      "testable": false
+    },
+    "com.unity.settings-manager@2.0.1": {
+      "name": "com.unity.settings-manager",
+      "displayName": "Settings Manager",
+      "resolvedPath": "C:\\Users\\Tautvydas\\Desktop\\Uni\\Semester 4\\Programu indzinerijos projektas\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.settings-manager@56a930affa1e",
+      "fingerprint": "56a930affa1e4462d3595b5c19a1c2a4bf2015d2",
+      "editorCompatibility": "2018.4.0a1",
+      "version": "2.0.1",
+      "source": "registry",
+      "testable": false
+    },
+    "com.autodesk.fbx@5.1.1": {
+      "name": "com.autodesk.fbx",
+      "displayName": "Autodesk FBX SDK for Unity",
+      "resolvedPath": "C:\\Users\\Tautvydas\\Desktop\\Uni\\Semester 4\\Programu indzinerijos projektas\\Skolininkai\\My project\\Library\\PackageCache\\com.autodesk.fbx@5797ff6b31c7",
+      "fingerprint": "5797ff6b31c7c66189bffe1adc9cbf0ad5a9cbbf",
+      "editorCompatibility": "2020.3.0a1",
+      "version": "5.1.1",
+      "source": "registry",
       "testable": false
     },
     "com.unity.searcher@4.9.2": {
