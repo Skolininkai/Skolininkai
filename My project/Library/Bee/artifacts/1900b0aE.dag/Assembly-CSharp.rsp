@@ -434,6 +434,7 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.37f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
 "Assets/Scripts/MainMenu.cs"
 "Assets/Scripts/MoveCamera.cs"
+"Assets/Scripts/PauseMenu.cs"
 "Assets/Scripts/PickUpScript.cs"
 "Assets/Scripts/PlayerLook.cs"
 "Assets/Scripts/PlayerMovement.cs"
