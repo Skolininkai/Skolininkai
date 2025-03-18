@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -23,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Keybinds")]
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
-    [SerializeField] KeyCode sprintKey = KeyCode.LeftShift;
+    //[SerializeField] KeyCode sprintKey = KeyCode.LeftShift;
 
     [Header("Drag")]
     [SerializeField] float groundDrag = 6f;
@@ -69,12 +70,31 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        //isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask); nzn kodel neveike
-        isGrounded = Physics.CheckSphere(transform.position - new Vector3(0, 1, 0), groundDistance, groundMask);
+        //isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask); //nzn kodel neveike
+        //isGrounded = Physics.CheckSphere(transform.position - new Vector3(0, 0.8f, 0), groundDistance, groundMask);
+
+        float sphereRadius = 0.5f;
+        float sphereCastDistance = playerHeight * 0.5f + 0.05f;
+        isGrounded = Physics.SphereCast(transform.position, sphereRadius, Vector3.down, out RaycastHit hit, sphereCastDistance, groundMask);
+
+        float raycastDistance = playerHeight * 0.5f + groundDistance; // Slightly longer than half the player's height
+        // isGrounded = Physics.Raycast(transform.position, Vector3.down, raycastDistance, groundMask);
+        Debug.DrawRay(transform.position, Vector3.down, Color.yellow, raycastDistance);
 
         MyInput();
         ControlDrag();
         ControlSpeed();
+
+        // print("on slope " + OnSlope());
+
+        // if (isGrounded)
+        // {
+        //     print("grounded");
+        // }
+        // else
+        // {
+        //     print("su skola");
+        // }
 
         if (Input.GetKeyDown(jumpKey) && isGrounded)
         {
@@ -134,15 +154,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isGrounded && !OnSlope())
         {
-            rb.AddForce(moveDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Acceleration);
+            rb.AddForce(moveDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Force);
         }
         else if (isGrounded && OnSlope())
         {
-            rb.AddForce(slopeMoveDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Acceleration);
+            rb.AddForce(slopeMoveDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Force);
         }
         else if (!isGrounded)
         {
-            rb.AddForce(moveDirection.normalized * moveSpeed * movementMultiplier * airMultiplier, ForceMode.Acceleration);
+            rb.AddForce(moveDirection.normalized * moveSpeed * movementMultiplier * airMultiplier, ForceMode.Force);
         }
     }
 }
