@@ -438,6 +438,7 @@
 "Assets/Scripts/PickUpScript.cs"
 "Assets/Scripts/PlayerLook.cs"
 "Assets/Scripts/PlayerMovement.cs"
+"Assets/Scripts/SaveBetweenScene.cs"
 "Assets/Scripts/Timer.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"
 -langversion:9.0
