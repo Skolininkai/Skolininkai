@@ -1,29 +1,29 @@
 Using pre-set license
 Built from '6000.0/staging' branch; Version is '6000.0.37f1 (090b7797214c) revision 592759'; Using compiler version '193933523'; Build Type 'Release'
-OS: 'Windows 10  (10.0.19045) 64bit Core' Language: 'en' Physical Memory: 16103 MB
+OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'en' Physical Memory: 16283 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
 
 COMMAND LINE ARGUMENTS:
-C:\Program Files\Unity\Hub\Editor\6000.0.37f1\Editor\Unity.exe
+F:\Unity Hub\6000.0.37f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
-C:/Users/osteja/Desktop/skola/Skolininkai/My project
+C:/Users/Darek/Documents/GitHub/Skolininkai/My project
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-59568
+59520
 -job-worker-count
-9
+1
 -background-job-worker-count
 8
 -gc-helper-count
 1
-Successfully changed project path to: C:/Users/osteja/Desktop/skola/Skolininkai/My project
-C:/Users/osteja/Desktop/skola/Skolininkai/My project
+Successfully changed project path to: C:/Users/Darek/Documents/GitHub/Skolininkai/My project
+C:/Users/Darek/Documents/GitHub/Skolininkai/My project
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -59,13 +59,17 @@ C:/Users/osteja/Desktop/skola/Skolininkai/My project
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [4504]  Target information:
+Player connection [19488]  Target information:
 
-Player connection [4504]  * "[IP] 192.168.1.164 [Port] 0 [Flags] 2 [Guid] 1161709671 [EditorId] 1161709671 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-D2VRHE2) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [19488]  * "[IP] 158.129.21.205 [Port] 0 [Flags] 2 [Guid] 41795168 [EditorId] 41795168 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-JK1VK43) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [4504] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [4504] Host joined alternative multi-casting on [225.0.0.222:34997]...
-JobSystem: Creating JobQueue using job-worker-count value 9
+Player connection [19488]  * "[IP] 192.168.56.1 [Port] 0 [Flags] 2 [Guid] 41795168 [EditorId] 41795168 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-JK1VK43) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [19488]  * "[IP] 192.168.137.1 [Port] 0 [Flags] 2 [Guid] 41795168 [EditorId] 41795168 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-JK1VK43) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [19488] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [19488] Host joined alternative multi-casting on [225.0.0.222:34997]...
+JobSystem: Creating JobQueue using job-worker-count value 1
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
 [Physics::Module] Id: 0xdecafbad
@@ -76,61 +80,59 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 3.52 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 32.29 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.0.37f1 (090b7797214c)
-[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.0.37f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/osteja/Desktop/skola/Skolininkai/My project/Assets
+[Subsystems] Discovering subsystems at path F:/Unity Hub/6000.0.37f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Darek/Documents/GitHub/Skolininkai/My project/Assets
 GfxDevice: creating device client; kGfxThreadingModeNonThreaded
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce RTX 3060 Ti (ID=0x2489)
+    Renderer: NVIDIA GeForce GTX 1060 3GB (ID=0x1c02)
     Vendor:   NVIDIA
-    VRAM:     8024 MB
-    Driver:   32.0.15.7260
+    VRAM:     2965 MB
+    Driver:   32.0.15.6094
 Initialize mono
-Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.0.37f1/Editor/Data/Managed'
-Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.0.37f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
-Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.0.37f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56428
+Mono path[0] = 'F:/Unity Hub/6000.0.37f1/Editor/Data/Managed'
+Mono path[1] = 'F:/Unity Hub/6000.0.37f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'F:/Unity Hub/6000.0.37f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56740
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.37f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
-Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.37f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.007659 seconds.
-- Loaded All Assemblies, in  0.640 seconds
+Register platform support module: F:/Unity Hub/6000.0.37f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.013681 seconds.
+- Loaded All Assemblies, in  2.698 seconds
 Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.672 seconds
-Domain Reload Profiling: 1305ms
-	BeginReloadAssembly (147ms)
+- Finished resetting the current domain, in  2.684 seconds
+Domain Reload Profiling: 5356ms
+	BeginReloadAssembly (952ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (58ms)
-	RebuildNativeTypeToScriptingClass (24ms)
-	initialDomainReloadingComplete (91ms)
-	LoadAllAssembliesAndSetupDomain (312ms)
-		LoadAssemblies (142ms)
+		CreateAndSetChildDomain (3ms)
+	RebuildCommonClasses (196ms)
+	RebuildNativeTypeToScriptingClass (54ms)
+	initialDomainReloadingComplete (330ms)
+	LoadAllAssembliesAndSetupDomain (1141ms)
+		LoadAssemblies (928ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (307ms)
-			TypeCache.Refresh (305ms)
-				TypeCache.ScanAssembly (281ms)
-			BuildScriptInfoCaches (0ms)
+		AnalyzeDomain (1133ms)
+			TypeCache.Refresh (1126ms)
+				TypeCache.ScanAssembly (1034ms)
+			BuildScriptInfoCaches (4ms)
 			ResolveRequiredComponents (1ms)
-	FinalizeReload (672ms)
+	FinalizeReload (2684ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (626ms)
+		SetupLoadedEditorAssemblies (2373ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (51ms)
-			SetLoadedEditorAssemblies (11ms)
-			BeforeProcessingInitializeOnLoad (104ms)
-			ProcessInitializeOnLoadAttributes (371ms)
-			ProcessInitializeOnLoadMethodAttributes (89ms)
+			InitializePlatformSupportModulesInManaged (285ms)
+			SetLoadedEditorAssemblies (30ms)
+			BeforeProcessingInitializeOnLoad (1075ms)
+			ProcessInitializeOnLoadAttributes (753ms)
+			ProcessInitializeOnLoadMethodAttributes (230ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -139,78 +141,235 @@ Domain Reload Profiling: 1305ms
 Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  1.327 seconds
-Refreshing native plugins compatible for Editor in 3.63 ms, found 4 plugins.
+- Loaded All Assemblies, in  8.151 seconds
+Refreshing native plugins compatible for Editor in 72.94 ms, found 4 plugins.
 Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
 [MODES] ModeService[none].Initialize
 [MODES] ModeService[none].LoadModes
 [MODES] Loading mode Default (0) for mode-current-id-My project
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.487 seconds
-Domain Reload Profiling: 2802ms
-	BeginReloadAssembly (226ms)
+- Finished resetting the current domain, in 16.250 seconds
+Domain Reload Profiling: 24340ms
+	BeginReloadAssembly (1467ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (9ms)
+		DisableScriptedObjects (47ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (40ms)
-	RebuildCommonClasses (52ms)
-	RebuildNativeTypeToScriptingClass (27ms)
-	initialDomainReloadingComplete (80ms)
-	LoadAllAssembliesAndSetupDomain (930ms)
-		LoadAssemblies (653ms)
+		CreateAndSetChildDomain (246ms)
+	RebuildCommonClasses (504ms)
+	RebuildNativeTypeToScriptingClass (95ms)
+	initialDomainReloadingComplete (232ms)
+	LoadAllAssembliesAndSetupDomain (5785ms)
+		LoadAssemblies (3382ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (398ms)
-			TypeCache.Refresh (283ms)
-				TypeCache.ScanAssembly (256ms)
-			BuildScriptInfoCaches (93ms)
-			ResolveRequiredComponents (18ms)
-	FinalizeReload (1487ms)
+		AnalyzeDomain (3266ms)
+			TypeCache.Refresh (2081ms)
+				TypeCache.ScanAssembly (1968ms)
+			BuildScriptInfoCaches (972ms)
+			ResolveRequiredComponents (180ms)
+	FinalizeReload (16258ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1224ms)
+		SetupLoadedEditorAssemblies (11524ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (4ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (257ms)
-			ProcessInitializeOnLoadAttributes (715ms)
-			ProcessInitializeOnLoadMethodAttributes (230ms)
-			AfterProcessingInitializeOnLoad (13ms)
-			EditorAssembliesLoaded (0ms)
+			InitializePlatformSupportModulesInManaged (6ms)
+			SetLoadedEditorAssemblies (46ms)
+			BeforeProcessingInitializeOnLoad (943ms)
+			ProcessInitializeOnLoadAttributes (5186ms)
+			ProcessInitializeOnLoadMethodAttributes (5166ms)
+			AfterProcessingInitializeOnLoad (176ms)
+			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (9ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 3.45 ms, found 4 plugins.
+		AwakeInstancesAfterBackupRestoration (718ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 1.55 seconds
+Refreshing native plugins compatible for Editor in 9.15 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 231 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6526 unused Assets / (2.1 MB). Loaded Objects now: 7242.
-Memory consumption went from 172.1 MB to 170.0 MB.
-Total: 13.184300 ms (FindLiveObjects: 1.270000 ms CreateObjectMapping: 0.931800 ms MarkObjects: 8.310400 ms  DeleteObjects: 2.669400 ms)
+Unloading 6527 unused Assets / (2.1 MB). Loaded Objects now: 7243.
+Memory consumption went from 163.1 MB to 161.0 MB.
+Total: 33.625600 ms (FindLiveObjects: 1.001600 ms CreateObjectMapping: 4.503600 ms MarkObjects: 19.963600 ms  DeleteObjects: 8.155600 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 12021.901868 seconds.
-  path: Assets/Objects/shelf.fbx
-  artifactKey: Guid(64204fd7815a5a64c9e4f853bac8739e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Objects/shelf.fbx using Guid(64204fd7815a5a64c9e4f853bac8739e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'adf9713f9e5cb382f85a208cf0999f33') in 1.4141711 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 35
+  Time since last request: 429197.163315 seconds.
+  path: Assets/Materials/Blue.mat
+  artifactKey: Guid(69ad8d624b960d14e922ee636337c12f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Blue.mat using Guid(69ad8d624b960d14e922ee636337c12f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '79a03d11acb9d09fca270c01a0358da7') in 16.123235 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000062 seconds.
-  path: Assets/puzzle_piece.png
-  artifactKey: Guid(eaea742b7521a3b44bf17592cca7270a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/puzzle_piece.png using Guid(eaea742b7521a3b44bf17592cca7270a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9bf9c079b07edc1b80255d49712a85db') in 0.0557345 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000037 seconds.
-  path: Assets/Readme.asset
-  artifactKey: Guid(8105016687592461f977c054a80ce2f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Readme.asset using Guid(8105016687592461f977c054a80ce2f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '50ea5ad2cda8720781b90d71f311d8d1') in 0.0148193 seconds
+  Time since last request: 0.286461 seconds.
+  path: Assets/Textures/brass_diya_lantern_diff_4k.jpg
+  artifactKey: Guid(3f2a7852b639a4a41b928be583720045) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/brass_diya_lantern_diff_4k.jpg using Guid(3f2a7852b639a4a41b928be583720045) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '009fd1eb00bb40dc22db738d7321621c') in 0.096628 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Textures/dark_wooden_planks_nor_gl_1k.exr
+  artifactKey: Guid(ca4fd0c90da03a4418f5c4190011be68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/dark_wooden_planks_nor_gl_1k.exr using Guid(ca4fd0c90da03a4418f5c4190011be68) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '6c7381e649d006db063d285aaa9802cb') in 0.0873776 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Textures/dark_wooden_planks_disp_1k.png
+  artifactKey: Guid(8c5c3fd05622c134c9aed8759eabafe9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/dark_wooden_planks_disp_1k.png using Guid(8c5c3fd05622c134c9aed8759eabafe9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd34cdbb96e0496669f705323f6d72ac7') in 0.2627801 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000051 seconds.
+  path: Assets/Textures/old_wood_floor_diff_1k.jpg
+  artifactKey: Guid(58f4f647f43f2b843918c5f9e09d8b14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/old_wood_floor_diff_1k.jpg using Guid(58f4f647f43f2b843918c5f9e09d8b14) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'acb2df492190e60007cbb7f36443f388') in 0.0645603 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Textures/old_wood_floor_rough_1k.exr
+  artifactKey: Guid(1ab031a86ba981c4791279ae21276c4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/old_wood_floor_rough_1k.exr using Guid(1ab031a86ba981c4791279ae21276c4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ccc4530058995418063149db33be38f2') in 0.0358315 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Textures/painted_plaster_wall_rough_1k.exr
+  artifactKey: Guid(82fe033b616531f40a6eabf97405729b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/painted_plaster_wall_rough_1k.exr using Guid(82fe033b616531f40a6eabf97405729b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a254085f731ac504dd6e0df5ae064564') in 0.1098615 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Textures/cracked_concrete_wall_rough_1k.exr
+  artifactKey: Guid(08f82a33780b5854ca60bf54a3ce0b45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/cracked_concrete_wall_rough_1k.exr using Guid(08f82a33780b5854ca60bf54a3ce0b45) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '50a33691dbf6490459d981d69ded3dc5') in 0.0328539 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Textures/oak_veneer_01_diff_1k.jpg
+  artifactKey: Guid(862804bfcea76df4eafc1e4af7bf18d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/oak_veneer_01_diff_1k.jpg using Guid(862804bfcea76df4eafc1e4af7bf18d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00236f81d0a471782bcf1f5703795b4b') in 0.0147016 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/Textures/painted_plaster_wall_disp_1k.png
+  artifactKey: Guid(bdc67e668c39d2b43bacac442f62b692) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/painted_plaster_wall_disp_1k.png using Guid(bdc67e668c39d2b43bacac442f62b692) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ac7e5544c869a3146a5cb5f2c9832967') in 0.0451689 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Textures/brass_diya_lantern_rough_4k.exr
+  artifactKey: Guid(ba999b41cd95b09498e20ba2d84a2e64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/brass_diya_lantern_rough_4k.exr using Guid(ba999b41cd95b09498e20ba2d84a2e64) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '04cbe83fa5d3751693cc005191590a24') in 2.0928554 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Textures/painted_plaster_wall_diff_1k.jpg
+  artifactKey: Guid(ded04c2ee03fb324ba086987aa892454) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/painted_plaster_wall_diff_1k.jpg using Guid(ded04c2ee03fb324ba086987aa892454) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9c78d423ba21761e4cfbd04671aff8e1') in 0.045 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Textures/rusty_metal_02_rough_1k.jpg
+  artifactKey: Guid(57aef42bf4e660c489ca188e0df2927e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/rusty_metal_02_rough_1k.jpg using Guid(57aef42bf4e660c489ca188e0df2927e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '02c4fd9a246302009b3acbd66fd034f9') in 0.0648209 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Textures/rusty_metal_sheet_nor_gl_1k.exr
+  artifactKey: Guid(4578a6df472d86c4e8df1840efa52fa0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/rusty_metal_sheet_nor_gl_1k.exr using Guid(4578a6df472d86c4e8df1840efa52fa0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f990a7d48e361aa61848832b266aa379') in 0.0658925 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Textures/plywood_nor_gl_1k.exr
+  artifactKey: Guid(888d090f1f5d30f498e577899179ed67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/plywood_nor_gl_1k.exr using Guid(888d090f1f5d30f498e577899179ed67) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'bdf2c67d97b2a5db59c6c613bba11d71') in 0.1997672 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000111 seconds.
+  path: Assets/Textures/oak_veneer_01_rough_1k.exr
+  artifactKey: Guid(a3a03e43e4f8ed643ab8fe69ece82d32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/oak_veneer_01_rough_1k.exr using Guid(a3a03e43e4f8ed643ab8fe69ece82d32) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '16259a4fe82dfe4bc5f4f59867b63fbd') in 0.1696794 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Textures/oak_veneer_01_nor_gl_1k.exr
+  artifactKey: Guid(0cd04bc5fd8771e4d92d5580c62eaf41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/oak_veneer_01_nor_gl_1k.exr using Guid(0cd04bc5fd8771e4d92d5580c62eaf41) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '1a2c1705b608ea747c19cb0fe2494bb2') in 0.0331319 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Textures/brass_diya_lantern_opacity_4k.png
+  artifactKey: Guid(f2eb05e468d605740b9be62cf8c2c16a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/brass_diya_lantern_opacity_4k.png using Guid(f2eb05e468d605740b9be62cf8c2c16a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '8c43309f0fe47534a463814525b05721') in 0.1651986 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 18.665401 seconds.
+  path: Assets/Textures/weathered_planks_nor_gl_1k.exr
+  artifactKey: Guid(df040286e1b972346b4b978dc9678037) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/weathered_planks_nor_gl_1k.exr using Guid(df040286e1b972346b4b978dc9678037) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f6a7d09723ee516aea88c77dbf520e47') in 0.0921814 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.325320 seconds.
+  path: Assets/Materials/Floor.mat
+  artifactKey: Guid(1a685a4bf09162741bb7126200d97ecf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Floor.mat using Guid(1a685a4bf09162741bb7126200d97ecf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2e909475b9f3b0857974c68d0ebba8ec') in 0.2574827 seconds
+Internal: There are remaining Allocations on the JobTempAlloc. This is a leak, and will impact performance
+To Debug, run app with -diag-job-temp-memory-leak-validation cmd line argument. This will output the callstacks of the leaked allocations.
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 5
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Materials/room Variant 2.mat
+  artifactKey: Guid(86331785659fbe9429836186f726a6d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/room Variant 2.mat using Guid(86331785659fbe9429836186f726a6d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '8add184bbbfa1a736610a651e677f189') in 0.4381231 seconds
+Internal: There are remaining Allocations on the JobTempAlloc. This is a leak, and will impact performance
+To Debug, run app with -diag-job-temp-memory-leak-validation cmd line argument. This will output the callstacks of the leaked allocations.
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 28
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.045850 seconds.
+  path: Assets/Objects/dezute su ispjaustom formomis var1.fbx
+  artifactKey: Guid(398fa601b7834f549b1190654391a970) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Objects/dezute su ispjaustom formomis var1.fbx using Guid(398fa601b7834f549b1190654391a970) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ec51ec5bff8afec42351a00303830fdb') in 1.5310365 seconds
+Internal: There are remaining Allocations on the JobTempAlloc. This is a leak, and will impact performance
+To Debug, run app with -diag-job-temp-memory-leak-validation cmd line argument. This will output the callstacks of the leaked allocations.
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 30
 
 Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
 AssetImportWorker is now disconnected from the server
