@@ -15,6 +15,10 @@ public class PickUpScript : MonoBehaviour
     private bool canDrop = true; //this is needed so we don't throw/drop object when rotating the object
     private int LayerNumber; //layer index
 
+    // Reference to the OutlineSelection script
+    [Header("References")]
+    public OutlineSelection outlineSelection;
+
     //Reference to script which includes mouse movement of player (looking around)
     //we want to disable the player looking around when rotating the object
     //example below 
@@ -40,6 +44,11 @@ public class PickUpScript : MonoBehaviour
                     {
                         //pass in object hit into the PickUpObject function
                         PickUpObject(hit.transform.gameObject);
+
+                        if (outlineSelection != null)
+                        {
+                            outlineSelection.ClearHighlight();
+                        }
                     }
                 }
             }
