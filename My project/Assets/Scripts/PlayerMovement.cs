@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float moveSpeed = 6f;
     [SerializeField] float crouchSpeed = 3f;
     [SerializeField] float airMultiplier = 0.4f;
+    [SerializeField] float gravityMultiplier = 2.5f;
     float movementMultiplier = 10f;
 
     [Header("Jumping")]
@@ -37,6 +38,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float groundDistance = 0.2f;
     public bool isGrounded { get; private set; }
 
+    [Header("Crouch Settings")]
+    [SerializeField] float crouchHeight = 1f;
+    [SerializeField] float crouchCameraY = 0.3f;
+
     Vector3 moveDirection;
     Vector3 slopeMoveDirection;
 
@@ -52,6 +57,9 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         playerCollider = player.GetComponent<CapsuleCollider>();
         rb.freezeRotation = true;
+
+        playerCollider.height = playerHeight;
+        playerCollider.center = Vector3.zero;
     }
 
     private void Update()
@@ -74,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
 
         slopeMoveDirection = Vector3.ProjectOnPlane(moveDirection, slopeHit.normal);
 
-        if (isUncrouching)
+        if (isUncrouching && !Input.GetKey(crouchKey))
         {
             SmoothUncrouch();
         }
@@ -83,7 +91,16 @@ public class PlayerMovement : MonoBehaviour
             Uncrouch();
         }
 
-        Debug.DrawRay(transform.position + Vector3.up * (playerCollider.height / 2), Vector3.up, Color.red, playerHeight - (playerHeight / 2));
+        
+
+        Vector3 raycastOrigin = transform.position + Vector3.up * (playerCollider.center.y + playerCollider.height / 2);
+        float neededHeight = playerHeight - playerCollider.height;
+        Debug.DrawRay(raycastOrigin, Vector3.up, Color.red, neededHeight);
+        if (Physics.Raycast(raycastOrigin, Vector3.up, out RaycastHit hit2, neededHeight))
+        {
+            //Debug.Log("raycast hit");
+        }
+        
     }
 
     void MyInput()
@@ -103,6 +120,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void GravityModifier() 
+    {
+        if (!isGrounded)
+        {
+            rb.AddForce(Physics.gravity * (gravityMultiplier - 1), ForceMode.Acceleration);
+        }
+    }
+
     void Jump()
     {
         if (isGrounded)
@@ -116,21 +141,23 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isCrouching)
         {
-            playerCollider.height = playerHeight / 2;
+            playerCollider.height = crouchHeight;
             playerCollider.center = new Vector3(0, -0.25f, 0);
-            cameraPosition.transform.localPosition = new Vector3(0, 0.3f, 0);
+            cameraPosition.transform.localPosition = new Vector3(0, crouchCameraY, 0);
             isCrouching = true;
             isUncrouching = false;
         }
     }
+
     void Uncrouch()
     {
         if (isCrouching) 
         {
-            float raycastDistance = playerHeight - (playerHeight / 2);
-            Vector3 raycastOrigin = transform.position + Vector3.up * (playerCollider.height / 2);
+            Vector3 raycastOrigin = transform.position + Vector3.up * (playerCollider.center.y + playerCollider.height / 2);
 
-            if (!Physics.SphereCast(raycastOrigin, playerCollider.radius, Vector3.up, out RaycastHit hit, 0.5f))
+            float neededHeight = playerHeight - playerCollider.height + 0.1f;
+            //if (!Physics.SphereCast(raycastOrigin, playerCollider.radius, Vector3.up, out RaycastHit hit, neededHeight))
+            if (!Physics.Raycast(raycastOrigin, Vector3.up, out RaycastHit hit, neededHeight))
             {
                 isUncrouching = true;
             }
@@ -140,6 +167,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+    
     void SmoothUncrouch()
     {
         float targetHeight = playerHeight;
@@ -187,6 +215,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         MovePlayer();
+        GravityModifier();
     }
 
     void MovePlayer()
