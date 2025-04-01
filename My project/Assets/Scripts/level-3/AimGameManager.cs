@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.ProBuilder.Shapes;
 
 public class AimGameManager : MonoBehaviour
 {
@@ -119,5 +120,9 @@ public class AimGameManager : MonoBehaviour
         }
         // Show result (expand this)
         Debug.Log(success ? "You won!" : "Try again!");
+        if (success)
+        {
+            GameObject.FindWithTag("Door").GetComponent<SlidingDoor>().OpenDoor();
+        }
     }
 }
