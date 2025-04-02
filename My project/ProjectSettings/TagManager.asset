@@ -8,6 +8,7 @@ TagManager:
   - Sphere
   - Button
   - Door
+  - LED_Node
   layers:
   - Default
   - TransparentFX
