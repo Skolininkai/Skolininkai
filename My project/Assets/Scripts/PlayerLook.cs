@@ -6,8 +6,8 @@ public class PlayerLook : MonoBehaviour
 {
     [Header("References")]
 
-    [SerializeField] private float sensX = 100f;
-    [SerializeField] private float sensY = 100f;
+    [SerializeField] public float sensX = 100f;
+    [SerializeField] public float sensY = 100f;
 
     [SerializeField] Transform cam = null;
     [SerializeField] Transform orientation = null;

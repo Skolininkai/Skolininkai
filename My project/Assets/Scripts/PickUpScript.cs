@@ -22,12 +22,12 @@ public class PickUpScript : MonoBehaviour
     //Reference to script which includes mouse movement of player (looking around)
     //we want to disable the player looking around when rotating the object
     //example below 
-    //MouseLookScript mouseLookScript;
+    //PlayerLook lookScript;
     void Start()
     {
         LayerNumber = LayerMask.NameToLayer("holdLayer"); //if your holdLayer is named differently make sure to change this ""
 
-        //mouseLookScript = player.GetComponent<MouseLookScript>();
+        //lookScript = this.gameObject.GetComponent<PlayerLook>();
     }
     void Update()
     {
@@ -107,8 +107,8 @@ public class PickUpScript : MonoBehaviour
             canDrop = false; //make sure throwing can't occur during rotating
 
             //disable player being able to look around
-            //mouseLookScript.verticalSensitivity = 0f;
-            //mouseLookScript.lateralSensitivity = 0f;
+            //lookScript.sensX = 0f;
+            //lookScript.sensY = 0f;
 
             float XaxisRotation = Input.GetAxis("Mouse X") * rotationSensitivity;
             float YaxisRotation = Input.GetAxis("Mouse Y") * rotationSensitivity;
@@ -119,8 +119,8 @@ public class PickUpScript : MonoBehaviour
         else
         {
             //re-enable player being able to look around
-            //mouseLookScript.verticalSensitivity = originalvalue;
-            //mouseLookScript.lateralSensitivity = originalvalue;
+            //lookScript.sensX = 100f;
+            //lookScript.sensY = 100f;
             canDrop = true;
         }
     }

@@ -444,6 +444,7 @@
 "Assets/Scripts/Level-Intro/TriggerCircle.cs"
 "Assets/Scripts/Level-Intro/TriggerSquare.cs"
 "Assets/Scripts/Level-Intro/TriggerTringle.cs"
+"Assets/Scripts/LevelSelect.cs"
 "Assets/Scripts/MainMenu.cs"
 "Assets/Scripts/MoveCamera.cs"
 "Assets/Scripts/PauseMenu.cs"
