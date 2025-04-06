@@ -22,7 +22,7 @@ public class SlidingDoor : MonoBehaviour
         }
     }
 
-    private IEnumerator SlideDoor(Vector3 targetPosition)
+    public IEnumerator SlideDoor(Vector3 targetPosition)
     {
         isOpening = true;
         float elapsedTime = 0f;

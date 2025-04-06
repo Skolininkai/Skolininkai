@@ -19,6 +19,19 @@ public class PlayerLook : MonoBehaviour
 
     float xRotation;
     float yRotation;
+    #region Exposed for Testing
+    #if UNITY_INCLUDE_TESTS
+    public void SimulateMouseInput(float mouseX, float mouseY)
+    {
+        yRotation += mouseX * sensX * multiplier;
+        xRotation -= mouseY * sensY * multiplier;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        
+        cam.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+        orientation.transform.rotation = Quaternion.Euler(0, yRotation, 0);
+    }
+    #endif
+    #endregion
 
     private void Start()
     {
