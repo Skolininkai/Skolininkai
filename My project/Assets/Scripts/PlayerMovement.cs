@@ -52,6 +52,21 @@ public class PlayerMovement : MonoBehaviour
     bool isCrouching = false;
     bool isUncrouching = false;
 
+    #region Exposed for Testing
+    #if UNITY_INCLUDE_TESTS
+    public Transform TestOrientation { get => orientation; set => orientation = value; }
+    public GameObject TestPlayer { get => player; set => player = value; }
+    public GameObject TestCameraPosition { get => cameraPosition; set => cameraPosition = value; }
+    public Transform TestGroundCheck { get => groundCheck; set => groundCheck = value; }
+    public LayerMask TestGroundMask { get => groundMask; set => groundMask = value; }
+    public CapsuleCollider TestPlayerCollider { get => playerCollider; set => playerCollider = value; }
+    public float TestCrouchHeight => crouchHeight;
+    public float TestCrouchCameraY => crouchCameraY;
+    public float TestMoveSpeed { get => moveSpeed; set => moveSpeed = value; }
+    public bool TestIsGrounded => isGrounded;
+    #endif
+    #endregion
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -128,7 +143,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Jump()
+    public void Jump()
     {
         if (isGrounded)
         {
@@ -137,7 +152,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Crouch()
+    public void Crouch()
     {
         if (!isCrouching)
         {
@@ -149,7 +164,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Uncrouch()
+    public void Uncrouch()
     {
         if (isCrouching) 
         {
