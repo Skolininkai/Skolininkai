@@ -37,10 +37,35 @@ public class Buttons : MonoBehaviour
         new Vector3(0, 1f, 0)
     };
 
-    private Vector3[] targetPositions;
-    private Vector3[] originalPositions;
-    private float[] buttonEffectTimers;
-    private GameObject currentlyHighlightedButton;
+    public Vector3[] targetPositions;
+    public Vector3[] originalPositions;
+    public float[] buttonEffectTimers;
+    public GameObject currentlyHighlightedButton;
+
+    public void HandleButtonInteraction(GameObject button)
+    {
+        for (int i = 0; i < sphereButtons.Length; i++)
+        {
+            if (button == sphereButtons[i])
+            {
+                // Highlight button (unless press effect is active)
+                if (buttonEffectTimers[i] <= 0)
+                {
+                    sphereButtons[i].GetComponent<Renderer>().material = highlightedMaterial;
+                }
+                currentlyHighlightedButton = sphereButtons[i];
+                
+                // Check for click
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Debug.Log($"Button{i} pressed.");
+                    PressButton(i);
+                }
+                
+                break;
+            }
+        }
+    }
 
     void Start()
     {
@@ -79,7 +104,7 @@ public class Buttons : MonoBehaviour
         UpdateButtonInteraction();
     }
     
-    void UpdatePillarPositions()
+    public void UpdatePillarPositions()
     {
         for (int i = 0; i < pillars.Length; i++)
         {
@@ -91,7 +116,7 @@ public class Buttons : MonoBehaviour
         }
     }
     
-    void UpdateButtonEffects()
+    public void UpdateButtonEffects()
     {
         // Update visual effect timers
         for (int i = 0; i < buttonEffectTimers.Length; i++)
@@ -111,7 +136,7 @@ public class Buttons : MonoBehaviour
         }
     }
     
-    void UpdateButtonInteraction()
+    public void UpdateButtonInteraction()
     {
         // Check for button under crosshair
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
@@ -133,31 +158,11 @@ public class Buttons : MonoBehaviour
         // Find button under crosshair
         if (Physics.Raycast(ray, out hit, buttonPressDistance))
         {
-            for (int i = 0; i < sphereButtons.Length; i++)
-            {
-                if (hit.collider.gameObject == sphereButtons[i])
-                {
-                    // Highlight button (unless press effect is active)
-                    if (buttonEffectTimers[i] <= 0)
-                    {
-                        sphereButtons[i].GetComponent<Renderer>().material = highlightedMaterial;
-                    }
-                    currentlyHighlightedButton = sphereButtons[i];
-                    
-                    // Check for click
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        Debug.Log($"Button{i} pressed.");
-                        PressButton(i);
-                    }
-                    
-                    break;
-                }
-            }
+            HandleButtonInteraction(hit.collider.gameObject);
         }
     }
     
-    void PressButton(int buttonIndex)
+    public void PressButton(int buttonIndex)
     {
         // Set visual effect timer
         buttonEffectTimers[buttonIndex] = pressEffectDuration;
@@ -180,7 +185,7 @@ public class Buttons : MonoBehaviour
         }
     }
     
-    void ApplyMovements(Vector3[] movements)
+    public void ApplyMovements(Vector3[] movements)
     {
         for (int i = 0; i < pillars.Length; i++)
         {
