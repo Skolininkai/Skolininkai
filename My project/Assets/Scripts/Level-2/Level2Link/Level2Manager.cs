@@ -18,21 +18,21 @@ public class Level2Manager : MonoBehaviour
     private bool waitingForStartButton = true;
     private bool[] buttonCooldowns;
 
-    void Start()
+    public virtual void Start()
     {
         GeneratePattern();
         buttonCooldowns = new bool[screenPanels.Length]; // Initialize cooldowns
     }
 
-    public bool IsWaitingForInput()
+    public virtual bool IsWaitingForInput()
     {
         return waitingForInput;
     }
-    public bool IsWaitingForStartButton()
+    public virtual bool IsWaitingForStartButton()
     {
         return waitingForStartButton;
     }
-    public bool IsShowingPattern()
+    public virtual bool IsShowingPattern()
     {
         return showingPattern;
     }
@@ -79,7 +79,7 @@ public class Level2Manager : MonoBehaviour
 
     }
 
-    public void PlayerPress(int buttonIndex)
+    public virtual void PlayerPress(int buttonIndex)
     {
         if (playerTurn && waitingForInput && !buttonCooldowns[buttonIndex])
         {
