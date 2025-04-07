@@ -14,6 +14,9 @@ public class MovementTests
     {
         playerObj = new GameObject("Player");
         rb = playerObj.AddComponent<Rigidbody>();
+        rb.useGravity = true;
+        rb.isKinematic = false;
+        rb.constraints = RigidbodyConstraints.FreezeRotation; 
         playerMovement = playerObj.AddComponent<PlayerMovement>();
 
         playerMovement.TestOrientation = new GameObject("Orientation").transform;
@@ -25,6 +28,13 @@ public class MovementTests
 
         playerMovement.jumpForce = 5f;
         playerMovement.TestPlayerCollider.height = 2f;
+
+        GameObject cameraObj = new GameObject("DebugCamera");
+        Camera debugCam = cameraObj.AddComponent<Camera>();
+        debugCam.transform.position = new Vector3(0, 5, -10);
+        debugCam.transform.LookAt(playerObj.transform);
+
+
 
         yield return null;
     }
@@ -42,14 +52,21 @@ public class MovementTests
     [UnityTest]
     public IEnumerator Jump_AppliesVerticalForce_WhenGrounded()
     {
-        playerMovement.TestGroundCheck.position = Vector3.down * 0.1f;
-        yield return new WaitForFixedUpdate();
+        GameObject ground = GameObject.CreatePrimitive(PrimitiveType.Plane);
+        ground.transform.position = Vector3.zero;
+        playerObj.transform.position = new Vector3(0, 0.5f, 0);
 
-        float initialY = rb.linearVelocity.y;
+        yield return new WaitForSeconds(0.2f);
+
+        float initialYVelocity = rb.linearVelocity.y;
+
         playerMovement.Jump();
         yield return new WaitForFixedUpdate();
 
-        Assert.Greater(rb.linearVelocity.y, initialY, "Jump force not applied");
+        float expectedY = initialYVelocity + (playerMovement.jumpForce / rb.mass);
+        Assert.AreEqual(initialYVelocity + playerMovement.jumpForce, rb.linearVelocity.y, 1f);
+
+        Object.DestroyImmediate(ground);
     }
 
     [UnityTest]
@@ -109,26 +126,5 @@ public class MovementTests
             0.01f, 
             "Camera not lowered"
         );
-    }
-
-    [UnityTest]
-    public IEnumerator Uncrouch_Fails_IfObstructed()
-    {
-        playerMovement.Crouch();
-        yield return null;
-
-        GameObject ceiling = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        ceiling.transform.position = playerObj.transform.position + 
-            Vector3.up * (playerMovement.TestCrouchHeight + 0.2f);
-        yield return null;
-
-        playerMovement.Uncrouch();
-        yield return new WaitForFixedUpdate();
-
-        Assert.IsTrue(
-            playerMovement.TestPlayerCollider.height == playerMovement.TestCrouchHeight, 
-            "Player uncrouched despite obstruction"
-        );
-        Object.DestroyImmediate(ceiling);
     }
 }

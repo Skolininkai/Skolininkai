@@ -1,0 +1,16 @@
+{
+    "name": "Level3Ref",
+    "rootNamespace": "",
+    "references": [
+        "GUID:26980bbd7bca0b4419a11148ef3e43d7"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

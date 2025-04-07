@@ -60,10 +60,12 @@ public class PlayerMovement : MonoBehaviour
     public Transform TestGroundCheck { get => groundCheck; set => groundCheck = value; }
     public LayerMask TestGroundMask { get => groundMask; set => groundMask = value; }
     public CapsuleCollider TestPlayerCollider { get => playerCollider; set => playerCollider = value; }
+    public float TestplayerHeight => playerHeight;
     public float TestCrouchHeight => crouchHeight;
     public float TestCrouchCameraY => crouchCameraY;
     public float TestMoveSpeed { get => moveSpeed; set => moveSpeed = value; }
     public bool TestIsGrounded => isGrounded;
+    public bool TestIsCrouching => isCrouching;
     #endif
     #endregion
 
@@ -115,7 +117,6 @@ public class PlayerMovement : MonoBehaviour
         {
             //Debug.Log("raycast hit");
         }
-        
     }
 
     void MyInput()
@@ -172,7 +173,8 @@ public class PlayerMovement : MonoBehaviour
 
             float neededHeight = playerHeight - playerCollider.height + 0.1f;
             //if (!Physics.SphereCast(raycastOrigin, playerCollider.radius, Vector3.up, out RaycastHit hit, neededHeight))
-            if (!Physics.Raycast(raycastOrigin, Vector3.up, out RaycastHit hit, neededHeight))
+            bool cantUncrouch = Physics.Raycast(raycastOrigin, Vector3.up, out RaycastHit hit, neededHeight);
+            if (!cantUncrouch)
             {
                 isUncrouching = true;
             }
