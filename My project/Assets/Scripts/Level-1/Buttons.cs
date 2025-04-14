@@ -2,22 +2,6 @@ using UnityEngine;
 
 public class Buttons : MonoBehaviour
 {
-    [Header("Pillar Settings")]
-    public GameObject[] pillars;
-    public float moveSpeed = 5f;
-    
-    [Header("Button Settings")]
-    public GameObject[] sphereButtons;
-    public float buttonPressDistance = 5f; // Max distance to press buttons
-    public Material normalMaterial;
-    public Material highlightedMaterial;
-    public Material pressedMaterial;
-    public float pressEffectDuration = 0.3f; // Brief visual feedback
-    
-    [Header("Crosshair Settings")]
-    public Texture2D crosshairTexture;
-    public Vector2 crosshairSize = new Vector2(32, 32);
-    
     // Movement configurations
     private Vector3[] button1Movements = {
         new Vector3(0, 1f, 0),    
@@ -41,6 +25,24 @@ public class Buttons : MonoBehaviour
     public Vector3[] originalPositions;
     public float[] buttonEffectTimers;
     public GameObject currentlyHighlightedButton;
+    [Header("Pillar Settings")]
+    public GameObject[] pillars;
+    public float moveSpeed;
+    public float maxHeight;
+    public float minHeight;
+    
+    [Header("Button Settings")]
+    public GameObject[] sphereButtons;
+    public float buttonPressDistance = 5f; // Max distance to press buttons
+    public Material normalMaterial;
+    public Material highlightedMaterial;
+    public Material pressedMaterial;
+    public float pressEffectDuration = 0.3f; // Brief visual feedback
+    
+    [Header("Crosshair Settings")]
+    public Texture2D crosshairTexture;
+    public Vector2 crosshairSize = new Vector2(32, 32);
+    
 
     public void HandleButtonInteraction(GameObject button)
     {
@@ -108,6 +110,10 @@ public class Buttons : MonoBehaviour
     {
         for (int i = 0; i < pillars.Length; i++)
         {
+
+            // Clamp the target position before moving
+            //targetPositions[i].y = Mathf.Clamp(targetPositions[i].y, minHeight, maxHeight);
+
             pillars[i].transform.position = Vector3.Lerp(
                 pillars[i].transform.position,
                 targetPositions[i],
@@ -189,7 +195,21 @@ public class Buttons : MonoBehaviour
     {
         for (int i = 0; i < pillars.Length; i++)
         {
-            targetPositions[i] += movements[i];
+            // Calculate new position
+            Vector3 newPosition = targetPositions[i] + movements[i];
+            
+            // Apply movement only if it won't exceed boundaries
+            if (newPosition.y <= maxHeight && newPosition.y >= minHeight)
+            {
+                targetPositions[i] = newPosition;
+            }
+            else
+            {
+                // Optionally play a sound or show feedback that movement is blocked
+                Debug.Log($"Pillar {i} movement blocked - would exceed boundaries");
+                Debug.Log($"Current Y: {targetPositions[i]} after: {newPosition}");
+                Debug.Log($"MaxHeight {maxHeight} MinHeight {minHeight}");
+            }
         }
     }
     
