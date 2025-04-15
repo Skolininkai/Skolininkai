@@ -25,20 +25,35 @@ public class AimGameManager : MonoBehaviour
     //public TMPro.TextMeshProUGUI timerText;
     //public TMPro.TextMeshProUGUI scoreText;
 
+    [Header("Lights")]
+    public Light roomLight;
+    public Light triggerLight;
+    public float minFlickerSpeed = 0.05f;
+    public float maxFlickerSpeed = 0.2f;
+    private Coroutine flickerCoroutine;
+    private bool initialLightState;
+    private float initialIntensity;
+
+    [Header("Other")]
     public bool isMiniGameActive;
     public float currentTime;
     public int poppedSpheres;
     public int activeSpheres;
+    private float fixedCheckRadius;
+    private bool gameFinished = false;
 
     void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+        fixedCheckRadius = (maxSphereSize / 2f) + 0.1f;
+        triggerLight.color = new Color32(207, 176, 124, 255);
+        roomLight.color = new Color32(207, 176, 124, 255);
     }
 
     public void StartMiniGame()
     {
-        if (isMiniGameActive) return;
+        if (isMiniGameActive || gameFinished) return;
 
         GameObject player = GameObject.FindWithTag("Player");
         if (player == null)
@@ -58,35 +73,47 @@ public class AimGameManager : MonoBehaviour
         {
             SpawnSphere();
         }
+        initialLightState = roomLight.enabled;
+        flickerCoroutine = StartCoroutine(FlickerLight());
+        roomLight.color = new Color32(207, 176, 124, 255);
+        triggerLight.color = Color.red;
+        initialIntensity = roomLight.intensity;
     }
 
     void Update()
     {
-        if (!isMiniGameActive) return;
+        if (!isMiniGameActive) 
+        {
+            return;
+        }
 
         currentTime -= Time.deltaTime;
         //timerText.text = $"Time: {currentTime:F1}";
         //scoreText.text = $"Popped: {poppedSpheres}/{totalSpheresToPop}";
 
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        if (Physics.Raycast(ray, out RaycastHit hit, 100f))
+        if (Input.GetMouseButtonDown(0))
         {
-            if (hit.collider.CompareTag("Sphere"))
+            Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            if (Physics.Raycast(ray, out RaycastHit hit, 100f))
             {
-                Destroy(hit.collider.gameObject);
-                activeSpheres = Mathf.Max(0, activeSpheres - 1);
-                poppedSpheres++;
-
-                if (poppedSpheres < totalSpheresToPop && activeSpheres < maxActiveSpheres)
+                if (hit.collider.CompareTag("Sphere"))
                 {
-                    SpawnSphere();
-                }
-            }
-        }    
+                    Destroy(hit.collider.gameObject);
+                    activeSpheres = Mathf.Max(0, activeSpheres - 1);
+                    poppedSpheres++;
 
+                    if (poppedSpheres < totalSpheresToPop && activeSpheres < maxActiveSpheres)
+                    {
+                        SpawnSphere();
+                    }
+                }
+            }   
+        }
+ 
         if (poppedSpheres >= totalSpheresToPop)
         {
             EndMiniGame(true);
+            gameFinished = true;
         }
 
         if (currentTime <= 0)
@@ -100,13 +127,37 @@ public class AimGameManager : MonoBehaviour
     {
         if (activeSpheres >= maxActiveSpheres || spherePrefab == null) return;
 
-        Vector2 randomCircle = Random.insideUnitCircle.normalized * spawnRadius;
-        float randomHeight = Random.Range(cylinderMinY, cylinderMaxY);
-        
-        Vector3 spawnPos = centerPoint.position + new Vector3(randomCircle.x, randomHeight, randomCircle.y);
-        
+        int maxAttempts = 20;
+        Vector3 spawnPos = Vector3.zero;
+        bool validPosition = false;
+
+        for (int i = 0; i < maxAttempts; i++)
+        {
+            Vector2 randomCircle = Random.insideUnitCircle.normalized * spawnRadius;
+            float randomHeight = Random.Range(cylinderMinY, cylinderMaxY);
+            Vector3 attemptPos = centerPoint.position + new Vector3(randomCircle.x, randomHeight, randomCircle.y);
+
+            // Use fixed radius for all checks
+            if (!Physics.CheckSphere(attemptPos, fixedCheckRadius))
+            {
+                spawnPos = attemptPos;
+                validPosition = true;
+                break;
+            }
+        }
+        if (!validPosition) { return; }
+
         GameObject sphere = Instantiate(spherePrefab, spawnPos, Quaternion.identity);
-        sphere.transform.localScale = Vector3.one * Random.Range(minSphereSize, maxSphereSize);
+        float randomSize = Random.Range(minSphereSize, maxSphereSize);
+        sphere.transform.localScale = Vector3.one * randomSize;
+
+        Renderer rend = sphere.GetComponent<Renderer>();
+        if (rend != null)
+        {
+            Color emissionColor = Color.red * Mathf.LinearToGammaSpace(0.1f); // Intensity
+            rend.material.SetColor("_EmissionColor", emissionColor);
+            rend.material.EnableKeyword("_EMISSION");
+        }
 
         Collider col = sphere.GetComponent<Collider>();
         if (col != null)
@@ -134,6 +185,13 @@ public class AimGameManager : MonoBehaviour
                 doorObj.GetComponent<SlidingDoor>().OpenDoor();
             }
         }
+        triggerLight.color = new Color32(207, 176, 124, 255);
+        roomLight.color = new Color32(207, 176, 124, 255);
+        if (flickerCoroutine != null)
+        {
+            StopCoroutine(flickerCoroutine);
+            roomLight.enabled = initialLightState;
+        }
     }
     private IEnumerator EnableColliderAfterDelay(Collider col, float delay)
     {
@@ -142,5 +200,17 @@ public class AimGameManager : MonoBehaviour
         {
             col.enabled = true;
         }
+    }
+
+    private IEnumerator FlickerLight()
+    {
+        while (isMiniGameActive)
+        {
+            roomLight.enabled = !roomLight.enabled;
+            yield return new WaitForSeconds(Random.Range(minFlickerSpeed, maxFlickerSpeed));
+        }
+        
+        roomLight.enabled = initialLightState;
+        roomLight.intensity = Random.Range(initialIntensity * 0.2f, initialIntensity);
     }
 }

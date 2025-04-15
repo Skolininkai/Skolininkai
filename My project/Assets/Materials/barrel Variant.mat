@@ -25,7 +25,9 @@ Material:
   m_Parent: {fileID: -4973734387028869240, guid: 415150f182a5a6845980add97100d34a, type: 3}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _ENVIRONMENTREFLECTIONS_OFF
   - _NORMALMAP
+  - _SPECULARHIGHLIGHTS_OFF
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -50,8 +52,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _BumpScale: 1.5
+    - _EnvironmentReflections: 0
     - _Metallic: 0.25
     - _Smoothness: 1
+    - _SpecularHighlights: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
