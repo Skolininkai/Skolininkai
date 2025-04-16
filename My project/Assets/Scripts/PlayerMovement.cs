@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        float sphereRadius = 0.5f;
+        float sphereRadius = 0.4f;
         float sphereCastDistance = (playerCollider.height / 2) + groundDistance; // playerHeight * 0.5f + 0.05f;
         isGrounded = Physics.SphereCast(transform.position, sphereRadius, Vector3.down, out RaycastHit hit, sphereCastDistance, groundMask);
 

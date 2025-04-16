@@ -6,18 +6,18 @@ public class Buttons : MonoBehaviour
     private Vector3[] button1Movements = {
         new Vector3(0, 1f, 0),    
         new Vector3(0, -1f, 0),  
-        new Vector3(0, 1.5f, 0)     
+        new Vector3(0, 0.5f, 0)     
     };
     
     private Vector3[] button2Movements = {
-        new Vector3(0, -1.5f, 0),
+        new Vector3(0, -0.5f, 0),
         new Vector3(0, 1f, 0),
         new Vector3(0, -1f, 0)
     };
     
     private Vector3[] button3Movements = {
         new Vector3(0, 1f, 0),
-        new Vector3(0, 1.5f, 0),
+        new Vector3(0, 0.5f, 0),
         new Vector3(0, 1f, 0)
     };
 
@@ -25,6 +25,7 @@ public class Buttons : MonoBehaviour
     public Vector3[] originalPositions;
     public float[] buttonEffectTimers;
     public GameObject currentlyHighlightedButton;
+    
     [Header("Pillar Settings")]
     public GameObject[] pillars;
     public float moveSpeed;
@@ -33,16 +34,11 @@ public class Buttons : MonoBehaviour
     
     [Header("Button Settings")]
     public GameObject[] sphereButtons;
-    public float buttonPressDistance = 5f; // Max distance to press buttons
+    public float buttonPressDistance = 5f;
     public Material normalMaterial;
     public Material highlightedMaterial;
     public Material pressedMaterial;
-    public float pressEffectDuration = 0.3f; // Brief visual feedback
-    
-    [Header("Crosshair Settings")]
-    public Texture2D crosshairTexture;
-    public Vector2 crosshairSize = new Vector2(32, 32);
-    
+    public float pressEffectDuration = 0.3f;
 
     public void HandleButtonInteraction(GameObject button)
     {
@@ -50,20 +46,17 @@ public class Buttons : MonoBehaviour
         {
             if (button == sphereButtons[i])
             {
-                // Highlight button (unless press effect is active)
                 if (buttonEffectTimers[i] <= 0)
                 {
                     sphereButtons[i].GetComponent<Renderer>().material = highlightedMaterial;
                 }
                 currentlyHighlightedButton = sphereButtons[i];
                 
-                // Check for click
                 if (Input.GetMouseButtonDown(0))
                 {
                     Debug.Log($"Button{i} pressed.");
                     PressButton(i);
                 }
-                
                 break;
             }
         }
@@ -71,38 +64,29 @@ public class Buttons : MonoBehaviour
 
     void Start()
     {
-        // Initialize arrays
         originalPositions = new Vector3[pillars.Length];
         targetPositions = new Vector3[pillars.Length];
         buttonEffectTimers = new float[sphereButtons.Length];
         
-        // Store original positions
         for (int i = 0; i < pillars.Length; i++)
         {
             originalPositions[i] = pillars[i].transform.position;
             targetPositions[i] = originalPositions[i];
         }
         
-        // Set all buttons to normal material
         foreach (GameObject button in sphereButtons)
         {
             button.GetComponent<Renderer>().material = normalMaterial;
         }
         
-        // Lock and hide cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
     void Update()
     {
-        // Move pillars smoothly
         UpdatePillarPositions();
-        
-        // Handle button visual effects
         UpdateButtonEffects();
-        
-        // Handle button interaction
         UpdateButtonInteraction();
     }
     
@@ -110,10 +94,6 @@ public class Buttons : MonoBehaviour
     {
         for (int i = 0; i < pillars.Length; i++)
         {
-
-            // Clamp the target position before moving
-            //targetPositions[i].y = Mathf.Clamp(targetPositions[i].y, minHeight, maxHeight);
-
             pillars[i].transform.position = Vector3.Lerp(
                 pillars[i].transform.position,
                 targetPositions[i],
@@ -124,7 +104,6 @@ public class Buttons : MonoBehaviour
     
     public void UpdateButtonEffects()
     {
-        // Update visual effect timers
         for (int i = 0; i < buttonEffectTimers.Length; i++)
         {
             if (buttonEffectTimers[i] > 0)
@@ -132,7 +111,6 @@ public class Buttons : MonoBehaviour
                 buttonEffectTimers[i] -= Time.deltaTime;
                 if (buttonEffectTimers[i] <= 0)
                 {
-                    // Only revert if not currently highlighted
                     if (sphereButtons[i] != currentlyHighlightedButton)
                     {
                         sphereButtons[i].GetComponent<Renderer>().material = normalMaterial;
@@ -144,15 +122,12 @@ public class Buttons : MonoBehaviour
     
     public void UpdateButtonInteraction()
     {
-        // Check for button under crosshair
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
         
-        // Reset previous highlight if needed
         if (currentlyHighlightedButton != null && 
             !currentlyHighlightedButton.GetComponent<Renderer>().sharedMaterial.Equals(pressedMaterial))
         {
-            // Only revert if press effect isn't active
             int buttonIndex = System.Array.IndexOf(sphereButtons, currentlyHighlightedButton);
             if (buttonIndex >= 0 && buttonEffectTimers[buttonIndex] <= 0)
             {
@@ -161,7 +136,6 @@ public class Buttons : MonoBehaviour
             currentlyHighlightedButton = null;
         }
         
-        // Find button under crosshair
         if (Physics.Raycast(ray, out hit, buttonPressDistance))
         {
             HandleButtonInteraction(hit.collider.gameObject);
@@ -170,13 +144,9 @@ public class Buttons : MonoBehaviour
     
     public void PressButton(int buttonIndex)
     {
-        // Set visual effect timer
         buttonEffectTimers[buttonIndex] = pressEffectDuration;
-        
-        // Visual feedback
         sphereButtons[buttonIndex].GetComponent<Renderer>().material = pressedMaterial;
         
-        // Move pillars based on button pressed
         switch (buttonIndex)
         {
             case 0:
@@ -188,6 +158,9 @@ public class Buttons : MonoBehaviour
             case 2:
                 ApplyMovements(button3Movements);
                 break;
+            case 3: // New fourth button case
+                ResetPillars();
+                break;
         }
     }
     
@@ -195,32 +168,16 @@ public class Buttons : MonoBehaviour
     {
         for (int i = 0; i < pillars.Length; i++)
         {
-            // Calculate new position
             Vector3 newPosition = targetPositions[i] + movements[i];
             
-            // Apply movement only if it won't exceed boundaries
             if (newPosition.y <= maxHeight && newPosition.y >= minHeight)
             {
                 targetPositions[i] = newPosition;
             }
             else
             {
-                // Optionally play a sound or show feedback that movement is blocked
                 Debug.Log($"Pillar {i} movement blocked - would exceed boundaries");
-                Debug.Log($"Current Y: {targetPositions[i]} after: {newPosition}");
-                Debug.Log($"MaxHeight {maxHeight} MinHeight {minHeight}");
             }
-        }
-    }
-    
-    void OnGUI()
-    {
-        // Draw crosshair
-        if (crosshairTexture != null)
-        {
-            float xMin = (Screen.width - crosshairSize.x) / 2;
-            float yMin = (Screen.height - crosshairSize.y) / 2;
-            GUI.DrawTexture(new Rect(xMin, yMin, crosshairSize.x, crosshairSize.y), crosshairTexture);
         }
     }
     
@@ -230,5 +187,6 @@ public class Buttons : MonoBehaviour
         {
             targetPositions[i] = originalPositions[i];
         }
+        Debug.Log("All pillars reset to original positions");
     }
 }
