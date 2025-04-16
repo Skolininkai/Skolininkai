@@ -115,6 +115,12 @@ public class Level2Manager : MonoBehaviour
         {
             Debug.Log("Level Completed!");
             waitingForInput = false;
+
+            GameObject doorObj = GameObject.FindWithTag("Door");
+            if (doorObj != null)
+            {
+                doorObj.GetComponent<SlidingDoor>().OpenDoor();
+            }
         }
         else
         {
