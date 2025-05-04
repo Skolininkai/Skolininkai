@@ -14,6 +14,9 @@ public class PickUpScript : MonoBehaviour
     private Rigidbody heldObjRb; //rigidbody of object we pick up
     private bool canDrop = true; //this is needed so we don't throw/drop object when rotating the object
     private int LayerNumber; //layer index
+    private PlayerLook lookScript;
+    public GameObject TruePlayer;
+
 
     // Reference to the OutlineSelection script
     [Header("References")]
@@ -26,7 +29,7 @@ public class PickUpScript : MonoBehaviour
     void Start()
     {
         LayerNumber = LayerMask.NameToLayer("holdLayer"); //if your holdLayer is named differently make sure to change this ""
-
+        lookScript = TruePlayer.GetComponent<PlayerLook>();
         //lookScript = this.gameObject.GetComponent<PlayerLook>();
     }
     void Update()
@@ -101,29 +104,35 @@ public class PickUpScript : MonoBehaviour
         heldObj.transform.position = holdPos.transform.position;
     }
     void RotateObject()
+{
+    if (Input.GetKey(KeyCode.R))
     {
-        if (Input.GetKey(KeyCode.R))//hold R key to rotate, change this to whatever key you want
-        {
-            canDrop = false; //make sure throwing can't occur during rotating
+        canDrop = false;
 
-            //disable player being able to look around
-            //lookScript.sensX = 0f;
-            //lookScript.sensY = 0f;
-
-            float XaxisRotation = Input.GetAxis("Mouse X") * rotationSensitivity;
-            float YaxisRotation = Input.GetAxis("Mouse Y") * rotationSensitivity;
-            //rotate the object depending on mouse X-Y Axis
-            heldObj.transform.Rotate(Vector3.down, XaxisRotation);
-            heldObj.transform.Rotate(Vector3.right, YaxisRotation);
-        }
-        else
+        if (lookScript != null)
         {
-            //re-enable player being able to look around
-            //lookScript.sensX = 100f;
-            //lookScript.sensY = 100f;
-            canDrop = true;
+            lookScript.sensX = 0f;
+            lookScript.sensY = 0f;
         }
+
+        float XaxisRotation = Input.GetAxis("Mouse X") * rotationSensitivity;
+        float YaxisRotation = Input.GetAxis("Mouse Y") * rotationSensitivity;
+
+        heldObj.transform.Rotate(Vector3.down, XaxisRotation);
+        heldObj.transform.Rotate(Vector3.right, YaxisRotation);
     }
+    else
+    {
+        if (lookScript != null)
+        {
+            lookScript.sensX = 100f; // įrašyk čia savo įprastą jautrumą
+            lookScript.sensY = 100f;
+        }
+
+        canDrop = true;
+    }
+}
+
     void ThrowObject()
     {
         //same as drop function, but add force to object before undefining it
