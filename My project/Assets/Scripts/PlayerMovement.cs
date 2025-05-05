@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -40,7 +37,10 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Crouch Settings")]
     [SerializeField] float crouchHeight = 1f;
-    [SerializeField] float crouchCameraY = 0.3f;
+    [SerializeField] float crouchCameraOffsetY = 0.3f;
+    [SerializeField] float crouchColliderCenterOffsetY = -0.25f;
+    [SerializeField] float defaultCameraY = 0.65f;
+    [SerializeField] float uncrouchLerpSpeed = 10f;
 
     Vector3 moveDirection;
     Vector3 slopeMoveDirection;
@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
     public CapsuleCollider TestPlayerCollider { get => playerCollider; set => playerCollider = value; }
     public float TestplayerHeight => playerHeight;
     public float TestCrouchHeight => crouchHeight;
-    public float TestCrouchCameraY => crouchCameraY;
+    public float TestCrouchCameraY => crouchCameraOffsetY;
     public float TestMoveSpeed { get => moveSpeed; set => moveSpeed = value; }
     public bool TestIsGrounded => isGrounded;
     public bool TestIsCrouching => isCrouching;
@@ -97,18 +97,12 @@ public class PlayerMovement : MonoBehaviour
             Jump();
         }
 
-        slopeMoveDirection = Vector3.ProjectOnPlane(moveDirection, slopeHit.normal);
-
-        if (isUncrouching && !Input.GetKey(crouchKey))
-        {
-            SmoothUncrouch();
-        }
         if (isCrouching && !Input.GetKey(crouchKey))
         {
             Uncrouch();
         }
 
-        
+        slopeMoveDirection = Vector3.ProjectOnPlane(moveDirection, slopeHit.normal);
 
         Vector3 raycastOrigin = transform.position + Vector3.up * (playerCollider.center.y + playerCollider.height / 2);
         float neededHeight = playerHeight - playerCollider.height;
@@ -116,6 +110,16 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(raycastOrigin, Vector3.up, out RaycastHit hit2, neededHeight))
         {
             //Debug.Log("raycast hit");
+        }
+    }
+    private void FixedUpdate()
+    {
+        MovePlayer();
+        GravityModifier();
+
+        if (isUncrouching && !Input.GetKey(crouchKey))
+        {
+            SmoothUncrouch();
         }
     }
 
@@ -158,8 +162,8 @@ public class PlayerMovement : MonoBehaviour
         if (!isCrouching)
         {
             playerCollider.height = crouchHeight;
-            playerCollider.center = new Vector3(0, -0.25f, 0);
-            cameraPosition.transform.localPosition = new Vector3(0, crouchCameraY, 0);
+            playerCollider.center = new Vector3(0, crouchColliderCenterOffsetY, 0);
+            cameraPosition.transform.localPosition = new Vector3(0, crouchCameraOffsetY, 0);
             isCrouching = true;
             isUncrouching = false;
         }
@@ -178,23 +182,18 @@ public class PlayerMovement : MonoBehaviour
             {
                 isUncrouching = true;
             }
-            else
-            {
-                
-            }
         }
     }
     
     void SmoothUncrouch()
     {
         float targetHeight = playerHeight;
-        float targetCameraY = 0.65f;
 
-        playerCollider.height = Mathf.Lerp(playerCollider.height, targetHeight, Time.deltaTime * 10f);
-        playerCollider.center = Vector3.Lerp(playerCollider.center, Vector3.zero, Time.deltaTime * 10f);
+        playerCollider.height = Mathf.Lerp(playerCollider.height, targetHeight, Time.deltaTime * uncrouchLerpSpeed);
+        playerCollider.center = Vector3.Lerp(playerCollider.center, Vector3.zero, Time.deltaTime * uncrouchLerpSpeed);
 
-        Vector3 targetCameraPosition = new Vector3(0, targetCameraY, 0);
-        cameraPosition.transform.localPosition = Vector3.Lerp(cameraPosition.transform.localPosition, targetCameraPosition, Time.deltaTime * 10f);
+        Vector3 targetCameraPosition = new Vector3(0, defaultCameraY, 0);
+        cameraPosition.transform.localPosition = Vector3.Lerp(cameraPosition.transform.localPosition, targetCameraPosition, Time.deltaTime * uncrouchLerpSpeed);
 
         if (Mathf.Abs(playerCollider.height - targetHeight) < 0.01f)
         {
@@ -227,12 +226,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearDamping = airDrag;
         }
-    }
-
-    private void FixedUpdate()
-    {
-        MovePlayer();
-        GravityModifier();
     }
 
     void MovePlayer()
