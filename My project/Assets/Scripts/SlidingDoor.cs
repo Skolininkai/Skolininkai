@@ -8,10 +8,12 @@ public class SlidingDoor : MonoBehaviour
 
     private Vector3 closedPosition;
     private bool isOpening = false;
+    private Transform doorTransform;
 
     void Start()
     {
-        closedPosition = transform.position; // Save the initial position
+        doorTransform = transform;
+        closedPosition = doorTransform.position; // Save the initial position
     }
 
     public void OpenDoor()
@@ -25,13 +27,17 @@ public class SlidingDoor : MonoBehaviour
     public IEnumerator SlideDoor(Vector3 targetPosition)
     {
         isOpening = true;
+        Vector3 startPos = doorTransform.position;
+        float distance = Vector3.Distance(startPos, targetPosition);
+        float duration = distance / openSpeed;
         float elapsedTime = 0f;
-        while (elapsedTime < 1f)
+        while (elapsedTime < duration)
         {
-            transform.position = Vector3.Lerp(closedPosition, targetPosition, elapsedTime);
-            elapsedTime += Time.deltaTime * openSpeed;
+            float t = elapsedTime / duration;
+            doorTransform.position = Vector3.Lerp(closedPosition, targetPosition, t);
+            elapsedTime += Time.deltaTime;
             yield return null;
         }
-        transform.position = targetPosition;
+        doorTransform.position = targetPosition;
     }
 }

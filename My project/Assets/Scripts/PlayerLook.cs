@@ -1,13 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
     [Header("References")]
-
-    [SerializeField] public float sensX = 100f;
-    [SerializeField] public float sensY = 100f;
+    public float sensX = 100f;
+    public float sensY = 100f;
 
     [SerializeField] Transform cam = null;
     [SerializeField] Transform orientation = null;
@@ -15,7 +12,7 @@ public class PlayerLook : MonoBehaviour
     float mouseX;
     float mouseY;
 
-    float multiplier = 0.01f;
+    readonly float multiplier = 0.01f;
 
     float xRotation;
     float yRotation;
