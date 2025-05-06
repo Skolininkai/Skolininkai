@@ -9,13 +9,9 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Floor Variant
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_Parent: {fileID: 2100000, guid: 1a685a4bf09162741bb7126200d97ecf, type: 2}
+  m_Parent: {fileID: 2100000, guid: 77ddf1099ad4c674ea17f72d1e461478, type: 2}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _NORMALMAP
-  - _OCCLUSIONMAP
-  - _PARALLAXMAP
-  - _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -42,7 +38,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _Metallic: 0
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1

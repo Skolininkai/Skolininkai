@@ -9,6 +9,8 @@ TagManager:
   - Button
   - Door
   - LED_Node
+  - Heavy
+  - Hot
   layers:
   - Default
   - TransparentFX
