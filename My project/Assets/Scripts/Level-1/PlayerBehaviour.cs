@@ -14,8 +14,8 @@ public class PlayerBehaviour : MonoBehaviour
     void Start()
     {
         // Store the initial position and rotation
-        startPosition = transform.position;
-        startRotation = transform.rotation;
+        startPosition = transform.localPosition;
+        startRotation = transform.localRotation;
         
         // If characterController reference isn't set, try to get it automatically
         if (characterController == null)
@@ -27,7 +27,7 @@ public class PlayerBehaviour : MonoBehaviour
     void Update()
     {
         // Check if player has fallen below the threshold
-        if (transform.position.y < fallHeight)
+        if (transform.localPosition.y < fallHeight)
         {
             ResetPlayerPosition();
         }
@@ -42,8 +42,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
         
         // Reset position and rotation
-        transform.position = startPosition;
-        transform.rotation = startRotation;
+        transform.localPosition = startPosition;
         
         // Re-enable character controller if it exists
         if (characterController != null)

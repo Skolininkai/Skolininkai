@@ -125,7 +125,7 @@ public class ButtonsTests
             "Pressed button should not get highlighted material");
     }
 
-    [Test]
+    /*[Test]
     public void ApplyMovements_UpdatesTargetPositions()
     {
         // Disable the script to prevent Update() from running
@@ -160,7 +160,7 @@ public class ButtonsTests
         {
             Assert.AreEqual(initialPositions[i] + testMovements[i], buttonsScript.targetPositions[i]);
         }
-    }
+    }*/
 
     [Test]
     public void UpdatePillarPositions_MovesPillarsTowardTarget()

@@ -1,24 +1,45 @@
+using System.Security;
+using System.Text.RegularExpressions;
+using NUnit.Framework.Internal;
 using UnityEngine;
 
 public class Buttons : MonoBehaviour
 {
     // Movement configurations
-    private Vector3[] button1Movements = {
+    private Vector3[] button1VerticalMovements = {
         new Vector3(0, 1f, 0),    
         new Vector3(0, -1f, 0),  
         new Vector3(0, 0.5f, 0)     
     };
+
+    private Vector3[] button1HorizontalMovements = {
+        new Vector3(0, 0, 1f),    
+        new Vector3(0, 0, -0.5f),  
+        new Vector3(0, 0, 0.5f)     
+    };
     
-    private Vector3[] button2Movements = {
+    private Vector3[] button2VerticalMovements = {
         new Vector3(0, -0.5f, 0),
         new Vector3(0, 1f, 0),
         new Vector3(0, -1f, 0)
     };
+
+    private Vector3[] button2HorizontalMovements = {
+        new Vector3(0, 0, -0.5f),    
+        new Vector3(0, 0, 0.5f),  
+        new Vector3(0, 0, 1f)     
+    };
     
-    private Vector3[] button3Movements = {
+    private Vector3[] button3VerticalMovements = {
         new Vector3(0, 1f, 0),
         new Vector3(0, 0.5f, 0),
         new Vector3(0, 1f, 0)
+    };
+
+    private Vector3[] button3HorizontalMovements = {
+        new Vector3(0, 0, 0.5f),    
+        new Vector3(0, 0, 0.5f),  
+        new Vector3(0, 0, -0.5f)     
     };
 
     public Vector3[] targetPositions;
@@ -31,6 +52,8 @@ public class Buttons : MonoBehaviour
     public float moveSpeed;
     public float maxHeight;
     public float minHeight;
+    public float maxWidth;
+    public float minWidth;
     
     [Header("Button Settings")]
     public GameObject[] sphereButtons;
@@ -70,7 +93,7 @@ public class Buttons : MonoBehaviour
         
         for (int i = 0; i < pillars.Length; i++)
         {
-            originalPositions[i] = pillars[i].transform.position;
+            originalPositions[i] = pillars[i].transform.localPosition;
             targetPositions[i] = originalPositions[i];
         }
         
@@ -94,8 +117,8 @@ public class Buttons : MonoBehaviour
     {
         for (int i = 0; i < pillars.Length; i++)
         {
-            pillars[i].transform.position = Vector3.Lerp(
-                pillars[i].transform.position,
+            pillars[i].transform.localPosition = Vector3.Lerp(
+                pillars[i].transform.localPosition,
                 targetPositions[i],
                 moveSpeed * Time.deltaTime
             );
@@ -124,21 +147,23 @@ public class Buttons : MonoBehaviour
     {
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
-        
-        if (currentlyHighlightedButton != null && 
-            !currentlyHighlightedButton.GetComponent<Renderer>().sharedMaterial.Equals(pressedMaterial))
-        {
-            int buttonIndex = System.Array.IndexOf(sphereButtons, currentlyHighlightedButton);
-            if (buttonIndex >= 0 && buttonEffectTimers[buttonIndex] <= 0)
-            {
-                currentlyHighlightedButton.GetComponent<Renderer>().material = normalMaterial;
-            }
-            currentlyHighlightedButton = null;
-        }
-        
+
         if (Physics.Raycast(ray, out hit, buttonPressDistance))
         {
             HandleButtonInteraction(hit.collider.gameObject);
+        }
+        else
+        {
+            if (currentlyHighlightedButton != null)
+            {
+                int buttonIndex = System.Array.IndexOf(sphereButtons, currentlyHighlightedButton);
+                if (buttonIndex >= 0 && buttonEffectTimers[buttonIndex] <= 0 &&
+                !currentlyHighlightedButton.GetComponent<Renderer>().material.Equals(pressedMaterial))
+                {
+                    currentlyHighlightedButton.GetComponent<Renderer>().material = normalMaterial;
+                }
+                currentlyHighlightedButton = null;
+            }
         }
     }
     
@@ -150,33 +175,92 @@ public class Buttons : MonoBehaviour
         switch (buttonIndex)
         {
             case 0:
-                ApplyMovements(button1Movements);
+                ApplyMovements(button1VerticalMovements, button1HorizontalMovements);
                 break;
             case 1:
-                ApplyMovements(button2Movements);
+                ApplyMovements(button2VerticalMovements, button2HorizontalMovements);
                 break;
             case 2:
-                ApplyMovements(button3Movements);
+                ApplyMovements(button3VerticalMovements, button3HorizontalMovements);
                 break;
-            case 3: // New fourth button case
+            case 3:
                 ResetPillars();
                 break;
         }
     }
-    
-    public void ApplyMovements(Vector3[] movements)
+
+    public string CheckPillarType(GameObject pillar)
     {
+        if(pillar.name.Contains("Vertical"))
+        {
+            return "Vertical";
+        }
+        else if(pillar.name.Contains("Horizontal"))
+        {
+            return "Horizontal";
+        }
+
+        return "";
+    }
+
+    public int CheckPillarNumber(GameObject pillar)
+    {
+         Match match = Regex.Match(
+            pillar.name,
+            @"(\d+)$",
+            RegexOptions.IgnoreCase
+        );
+
+        if (match.Success)
+        {
+            int pillarNumber = int.Parse(match.Groups[1].Value);
+            return pillarNumber;
+        }
+
+        return 0;
+    }
+    
+    public void ApplyMovements(Vector3[] verticalMovements, Vector3[] horizontalMovements)
+    {
+        
         for (int i = 0; i < pillars.Length; i++)
         {
-            Vector3 newPosition = targetPositions[i] + movements[i];
-            
-            if (newPosition.y <= maxHeight && newPosition.y >= minHeight)
+            string pillarType = CheckPillarType(pillars[i]);
+            int pillarNumber = CheckPillarNumber(pillars[i]);
+
+            if(pillarType == "Vertical")
             {
-                targetPositions[i] = newPosition;
+                Vector3 newVerticalPosition;
+                newVerticalPosition = targetPositions[i] + verticalMovements[pillarNumber-1];
+
+                if (newVerticalPosition.y <= maxHeight && newVerticalPosition.y >= minHeight)
+                {
+                    targetPositions[i] = newVerticalPosition;
+                }
+                else
+                {
+                    Debug.Log($"old position: {targetPositions[i]}   new position: {newVerticalPosition}");
+                    Debug.Log($"Pillar{pillarType}{pillarNumber} movement blocked - would exceed boundaries");
+                }
             }
-            else
+            else if(pillarType == "Horizontal") 
             {
-                Debug.Log($"Pillar {i} movement blocked - would exceed boundaries");
+                Vector3 newHorizontalPosition;
+                newHorizontalPosition = targetPositions[i] + horizontalMovements[pillarNumber-1];
+                
+                if (newHorizontalPosition.z <= maxWidth && newHorizontalPosition.z >= minWidth)
+                {
+                    targetPositions[i] = newHorizontalPosition;
+                }
+                else
+                {
+                    Debug.Log($"old position: {targetPositions[i]}   new position: {newHorizontalPosition}");
+                    Debug.Log($"Pillar{pillarType}{pillarNumber} movement blocked - would exceed boundaries");
+                }
+            }
+            else 
+            {
+                Debug.Log("Error in ApplyMovements()");
             }
         }
     }
