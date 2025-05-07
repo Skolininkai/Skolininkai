@@ -22,8 +22,8 @@ public class AimGameManager : MonoBehaviour
     public float maxSphereSize = 1.5f;
 
     [Header("UI")]
-    //public TMPro.TextMeshProUGUI timerText;
-    //public TMPro.TextMeshProUGUI scoreText;
+    public TMPro.TextMeshProUGUI timerText;
+    public TMPro.TextMeshProUGUI scoreText;
 
     [Header("Lights")]
     public Light roomLight;
@@ -37,7 +37,7 @@ public class AimGameManager : MonoBehaviour
     [Header("Other")]
     public bool isMiniGameActive;
     public float currentTime;
-    public int poppedSpheres;
+    public int poppedSpheres = 0;
     public int activeSpheres;
     private float fixedCheckRadius;
     private bool gameFinished = false;
@@ -49,6 +49,12 @@ public class AimGameManager : MonoBehaviour
         fixedCheckRadius = (maxSphereSize / 2f) + 0.1f;
         triggerLight.color = new Color32(207, 176, 124, 255);
         roomLight.color = new Color32(207, 176, 124, 255);
+    }
+
+    void Start()
+    {
+        timerText.text = $"{gameDuration:F1}";
+        scoreText.text = $"{poppedSpheres}|{totalSpheresToPop}";
     }
 
     public void StartMiniGame()
@@ -88,8 +94,6 @@ public class AimGameManager : MonoBehaviour
         }
 
         currentTime -= Time.deltaTime;
-        //timerText.text = $"Time: {currentTime:F1}";
-        //scoreText.text = $"Popped: {poppedSpheres}/{totalSpheresToPop}";
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -121,6 +125,9 @@ public class AimGameManager : MonoBehaviour
             EndMiniGame(false);
             return;
         }
+
+        timerText.text = $"{currentTime:F1}";
+        scoreText.text = $"{poppedSpheres}|{totalSpheresToPop}";
     }
 
     public void SpawnSphere()

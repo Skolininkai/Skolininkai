@@ -2,7 +2,8 @@
     "name": "Level3Ref",
     "rootNamespace": "",
     "references": [
-        "GUID:26980bbd7bca0b4419a11148ef3e43d7"
+        "GUID:26980bbd7bca0b4419a11148ef3e43d7",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
