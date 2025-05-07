@@ -11,6 +11,8 @@ TagManager:
   - LED_Node
   - Heavy
   - Hot
+  - RightPlate
+  - LeftPlate
   layers:
   - Default
   - TransparentFX
