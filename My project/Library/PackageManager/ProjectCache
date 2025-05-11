@@ -6,7 +6,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638777233183811417
+      ticks: 638825863737499093
     m_Hash: 3443086720
   m_LockFileStatus:
     m_FilePath: C:/Users/Tautvydas/Desktop/Uni/Semester 4/Programu indzinerijos projektas/Skolininkai/My
@@ -15,7 +15,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638777233183846864
+      ticks: 638825863737499093
     m_Hash: 1916009384
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -239,10 +239,12 @@ m_ResolvedPackages:
     - 2.6.0
     - 2.7.1
     - 2.8.1
+    - 2.8.2
     compatible:
     - 2.6.0
     - 2.7.1
     - 2.8.1
+    - 2.8.2
     recommended: 2.6.0
     deprecated: []
   dependencies: []
