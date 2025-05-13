@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] float moveSpeed = 6f;
+    private float roMoveSpeed;
     [SerializeField] float crouchSpeed = 3f;
     [SerializeField] float airMultiplier = 0.4f;
     [SerializeField] float gravityMultiplier = 2.5f;
@@ -77,6 +78,8 @@ public class PlayerMovement : MonoBehaviour
 
         playerCollider.height = playerHeight;
         playerCollider.center = Vector3.zero;
+
+        roMoveSpeed = moveSpeed;
     }
 
     private void Update()
@@ -150,11 +153,23 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
+        if (isCrouching && !CanUncrouch()) 
+        {
+            return;
+        }
         if (isGrounded)
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         }
+    }
+
+    public bool CanUncrouch()
+    {
+        Vector3 raycastOrigin = transform.position + Vector3.up * (playerCollider.center.y + playerCollider.height / 2);
+        float neededHeight = playerHeight - playerCollider.height + 0.1f;
+        bool cantUncrouch = Physics.Raycast(raycastOrigin, Vector3.up, out RaycastHit hit, neededHeight);
+        return !cantUncrouch;
     }
 
     public void Crouch()
@@ -173,12 +188,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isCrouching) 
         {
-            Vector3 raycastOrigin = transform.position + Vector3.up * (playerCollider.center.y + playerCollider.height / 2);
-
-            float neededHeight = playerHeight - playerCollider.height + 0.1f;
-            //if (!Physics.SphereCast(raycastOrigin, playerCollider.radius, Vector3.up, out RaycastHit hit, neededHeight))
-            bool cantUncrouch = Physics.Raycast(raycastOrigin, Vector3.up, out RaycastHit hit, neededHeight);
-            if (!cantUncrouch)
+            if (CanUncrouch())
             {
                 isUncrouching = true;
             }
@@ -212,7 +222,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-           moveSpeed = 6f;
+           moveSpeed = roMoveSpeed;
         }
     }
 
