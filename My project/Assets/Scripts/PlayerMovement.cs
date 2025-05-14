@@ -84,11 +84,26 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        float sphereRadius = 0.4f;
-        float sphereCastDistance = (playerCollider.height / 2) + groundDistance; // playerHeight * 0.5f + 0.05f;
-        isGrounded = Physics.SphereCast(transform.position, sphereRadius, Vector3.down, out RaycastHit hit, sphereCastDistance, groundMask);
+        //float sphereRadius = 0.4f;
+        //float sphereCastDistance = (playerCollider.height / 2) + groundDistance; // playerHeight * 0.5f + 0.05f;
+        //isGrounded = Physics.SphereCast(transform.position, sphereRadius, Vector3.down, out RaycastHit hit, sphereCastDistance, groundMask);
+        Vector3 colliderBottom = transform.position + playerCollider.center - Vector3.up * (playerCollider.height / 2);
+        // float skinWidth = 0.1f;
+        // Vector3 sphereCastStart = colliderBottom + Vector3.up * skinWidth;
+        // float castDistance = groundDistance + skinWidth;
+        // isGrounded = Physics.SphereCast(
+        //     sphereCastStart, 
+        //     sphereRadius, 
+        //     Vector3.down, 
+        //     out RaycastHit hit, 
+        //     castDistance,
+        //     groundMask
+        // );
 
-        Debug.DrawRay(transform.position, Vector3.down, Color.yellow, playerHeight * 0.5f + groundDistance);
+        Debug.DrawRay(colliderBottom, Vector3.down, Color.yellow, 0.5f);
+
+        float checkRadius = 0.4f; // Adjust based on player size
+        isGrounded = Physics.CheckSphere(colliderBottom, checkRadius, groundMask);
 
 
         MyInput();
@@ -153,10 +168,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        if (isCrouching && !CanUncrouch()) 
-        {
-            return;
-        }
+        if (isUncrouching) return;
+        if (isCrouching && !CanUncrouch()) return;
         if (isGrounded)
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);

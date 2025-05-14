@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class WallSpawner : MonoBehaviour
 {
+    [System.Serializable]
+    public class WallConfig
+    {
+        public GameObject prefab;
+        public Vector3 spawnOffset;
+        public Vector3 spawnRotation; // Adjust rotations per-prefab in Inspector
+    }
+
     [Header("Settings")]
-    public List<GameObject> wallPrefabs; // Prefabs with colliders/meshes
-    public Transform startPoint;         // Where walls spawn
-    public Transform endPoint;           // Where walls get destroyed
-    public float moveSpeed = 5f;         // Wall movement speed
-    public float spawnInterval = 2f;     // Time between spawns
+    public List<WallConfig> wallConfigs = new List<WallConfig>(); // Replace wallPrefabs with this
+    public Transform startPoint;
+    public Transform endPoint;
+    public float moveSpeed = 5f;
+    public float spawnInterval = 2f;
 
     private bool isSpawning = true;
 
@@ -18,40 +26,55 @@ public class WallSpawner : MonoBehaviour
         StartCoroutine(SpawnWallsRoutine());
     }
 
-    // Call this via UnityEvent or another script when player enters trigger
     public void StopSpawning()
     {
         isSpawning = false;
         StopAllCoroutines();
+        GameObject doorObj = GameObject.FindWithTag("Door");
+        if (doorObj != null)
+        {
+            doorObj.GetComponent<SlidingDoor>().OpenDoor();
+        }
     }
 
     IEnumerator SpawnWallsRoutine()
     {
         while (isSpawning)
         {
-            // Spawn random wall from list
-            GameObject wallPrefab = wallPrefabs[Random.Range(0, wallPrefabs.Count)];
-            GameObject newWall = Instantiate(wallPrefab, startPoint.position, startPoint.rotation);
+            // Pick a random wall configuration
+            WallConfig config = wallConfigs[Random.Range(0, wallConfigs.Count)];
+            Vector3 spawnPosition = startPoint.position + 
+                                startPoint.rotation * config.spawnOffset;
+            //Debug.Log($"Spawning wall at: {spawnPosition}");
+            Quaternion rotation = Quaternion.Euler(config.spawnRotation);
             
-            // Start moving the wall
-            StartCoroutine(MoveWallRoutine(newWall.transform));
-            
+            // Instantiate with custom rotation
+            GameObject newWall = Instantiate(
+                config.prefab,
+                spawnPosition,
+                rotation // Use the prefab's defined rotation
+            );
+
+            Vector3 endPosition = endPoint.position + startPoint.rotation * config.spawnOffset;
+
+            //Debug.Log($"Wall actual position: {newWall.transform.position}");
+            StartCoroutine(MoveWallRoutine(newWall.transform, endPosition));
             yield return new WaitForSeconds(spawnInterval);
         }
     }
 
-    IEnumerator MoveWallRoutine(Transform wall)
+    IEnumerator MoveWallRoutine(Transform wall, Vector3 endPos)
     {
-        while (Vector3.Distance(wall.position, endPoint.position) > 0.1f && isSpawning)
+        // (Same as before)
+        while (Vector3.Distance(wall.position, endPos) > 0.1f && isSpawning)
         {
             wall.position = Vector3.MoveTowards(
                 wall.position,
-                endPoint.position,
+                endPos,
                 moveSpeed * Time.deltaTime
             );
             yield return null;
         }
-        
         Destroy(wall.gameObject);
     }
 }
