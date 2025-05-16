@@ -41,6 +41,7 @@ public class AimGameManager : MonoBehaviour
     public int activeSpheres;
     private float fixedCheckRadius;
     private bool gameFinished = false;
+    public Timer timer;
 
     void Awake()
     {
@@ -53,7 +54,11 @@ public class AimGameManager : MonoBehaviour
 
     void Start()
     {
+        timer = FindFirstObjectByType<Timer>();
         timerText.text = $"{gameDuration:F1}";
+        // int minutes = Mathf.FloorToInt(gameDuration / 60);
+        // int seconds = Mathf.FloorToInt(gameDuration % 60);
+        // timerText.text = $"{minutes:00}:{seconds:00}";
         scoreText.text = $"{poppedSpheres}|{totalSpheresToPop}";
     }
 
@@ -88,7 +93,7 @@ public class AimGameManager : MonoBehaviour
 
     void Update()
     {
-        if (!isMiniGameActive) 
+        if (!isMiniGameActive)
         {
             return;
         }
@@ -111,9 +116,9 @@ public class AimGameManager : MonoBehaviour
                         SpawnSphere();
                     }
                 }
-            }   
+            }
         }
- 
+
         if (poppedSpheres >= totalSpheresToPop)
         {
             EndMiniGame(true);
@@ -127,7 +132,11 @@ public class AimGameManager : MonoBehaviour
         }
 
         timerText.text = $"{currentTime:F1}";
+        // int minutes = Mathf.FloorToInt(currentTime / 60);
+        // int seconds = Mathf.FloorToInt(currentTime % 60);
+        // timerText.text = $"{minutes:00}:{seconds:00}";
         scoreText.text = $"{poppedSpheres}|{totalSpheresToPop}";
+        Debug.Log(timer.totalTime);
     }
 
     public void SpawnSphere()
@@ -191,6 +200,9 @@ public class AimGameManager : MonoBehaviour
             {
                 doorObj.GetComponent<SlidingDoor>().OpenDoor();
             }
+            timer.StopTimer();
+            timer.totalTime = currentTime;
+            Debug.Log(timer.totalTime + "stopped");
         }
         triggerLight.color = new Color32(207, 176, 124, 255);
         roomLight.color = new Color32(207, 176, 124, 255);

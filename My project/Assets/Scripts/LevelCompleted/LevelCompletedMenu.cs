@@ -65,7 +65,7 @@ public class LevelCompletedMenu : MonoBehaviour
 
     private int CalculateRating(float time)
     {
-       
+
         if (time <= threeStarTime) return 3;
         if (time <= twoStarTime) return 2;
         if (time <= oneStarTime) return 1;
@@ -77,16 +77,22 @@ public class LevelCompletedMenu : MonoBehaviour
         completionTime = time;
         currentRating = CalculateRating(time);
 
+        SaveRating(currentRating);
+
         UpdateUI();
         ShowMenu();
     }
 
     public void NextLevel()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 8)
+        {
+            SceneManager.LoadScene(0);
+        }
         int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
         if (nextScene <= SceneManager.sceneCountInBuildSettings)
         {
-            SceneManager.LoadScene(nextScene);            
+            SceneManager.LoadScene(nextScene);
         }
         HideMenu();
 
@@ -105,14 +111,27 @@ public class LevelCompletedMenu : MonoBehaviour
     }
     private void UpdateUI()
     {
-        if(timeText != null)
+        if (timeText != null)
         {
-            timeText.text  = $"Time = {completionTime:F2}s";
+            timeText.text = $"Time = {completionTime:F2}s";
         }
 
-        for(int i = 0; i < starImages.Length; i++)
+        for (int i = 0; i < starImages.Length; i++)
         {
             starImages[i].sprite = (i < currentRating) ? filledStar : emptyStar;
         }
     }
+    private void SaveRating(int rating)
+{
+    // Use scene index or level ID as key
+    int currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
+    
+    // Only save if new rating is better than stored one
+    int storedRating = PlayerPrefs.GetInt($"Level_{currentLevelIndex}_Rating", 0);
+    if(rating > storedRating)
+    {
+        PlayerPrefs.SetInt($"Level_{currentLevelIndex}_Rating", rating);
+        PlayerPrefs.Save();
+    }
+}
 }
