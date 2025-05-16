@@ -51,7 +51,7 @@ public class PlayerPickup : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("You can't pick up heavy objects right now!");
+                    Hints.instance.ShowHint("With this ability you cant pickup heavy objects", 2);
                 }
             }
         }

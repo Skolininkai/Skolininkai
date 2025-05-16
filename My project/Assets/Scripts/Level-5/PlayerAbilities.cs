@@ -10,9 +10,11 @@ public class PlayerAbilities : MonoBehaviour
     public Sprite muscleSprite;
     public Sprite fireSprite;
     public GameObject levelFailedHUD;
+    public GameObject player;
 
     private void Start()
     {
+        Hints.instance.ShowHint("Press 'F' to switch the ability", 2);
         levelFailedHUD.SetActive(false);
         UpdateAbilityIcon();
     }
@@ -36,21 +38,7 @@ public class PlayerAbilities : MonoBehaviour
             }
             else
             {
-                Debug.Log("Ouch! It's hot!");
-                levelFailedHUD.SetActive(true);
-                // èia galima pridëti damage arba mirtá
-            }
-        }
-
-        if (other.CompareTag("Heavy"))
-        {
-            if (currentAbility == Ability.LiftHeavyObjects)
-            {
-                Debug.Log("Can ");
-                // galima tiesiog nieko nedaryt — leidþiam pereiti
-            }
-            else
-            {
+                Hints.instance.ShowHint("With this ability you cant walk through objects! Restarting", 2);
                 Debug.Log("Ouch! It's hot!");
                 levelFailedHUD.SetActive(true);
                 // èia galima pridëti damage arba mirtá
