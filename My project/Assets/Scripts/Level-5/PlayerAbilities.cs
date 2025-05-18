@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerAbilities : MonoBehaviour
@@ -39,9 +40,7 @@ public class PlayerAbilities : MonoBehaviour
             else
             {
                 Hints.instance.ShowHint("With this ability you cant walk through objects! Restarting", 2);
-                Debug.Log("Ouch! It's hot!");
-                levelFailedHUD.SetActive(true);
-                // èia galima pridëti damage arba mirtá
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
     }
