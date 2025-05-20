@@ -1,2 +1,14 @@
 fileFormatVersion: 2
 guid: cf1e3ea82898d6046b4f28e28ca7d2c1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - fullscreenTog: {instanceID: 0}
+  - musicGr: {fileID: 2409796591593487756, guid: 8699ac241675e0d4cada6dc3670b4f56, type: 2}
+  - soundGr: {fileID: 7958379136441384052, guid: 8699ac241675e0d4cada6dc3670b4f56, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
