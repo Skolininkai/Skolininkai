@@ -10,10 +10,14 @@ public class SlidingDoor : MonoBehaviour
     private bool isOpening = false;
     private Transform doorTransform;
 
+    [Header("Sound Settings")]
+    public AudioSource audioSource;
+    public AudioClip doorOpenSound;
+
     void Start()
     {
         doorTransform = transform;
-        closedPosition = doorTransform.position; // Save the initial position
+        closedPosition = doorTransform.position;
     }
 
     public void OpenDoor()
@@ -27,10 +31,18 @@ public class SlidingDoor : MonoBehaviour
     public IEnumerator SlideDoor(Vector3 targetPosition)
     {
         isOpening = true;
+
+        // 🔊 Проиграть звук, если задан
+        if (audioSource != null && doorOpenSound != null)
+        {
+            audioSource.PlayOneShot(doorOpenSound);
+        }
+
         Vector3 startPos = doorTransform.position;
         float distance = Vector3.Distance(startPos, targetPosition);
         float duration = distance / openSpeed;
         float elapsedTime = 0f;
+
         while (elapsedTime < duration)
         {
             float t = elapsedTime / duration;
@@ -38,6 +50,7 @@ public class SlidingDoor : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+
         doorTransform.position = targetPosition;
     }
 }

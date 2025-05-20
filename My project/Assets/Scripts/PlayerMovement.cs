@@ -15,6 +15,20 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float airMultiplier = 0.4f;
     [SerializeField] float gravityMultiplier = 2.5f;
     float movementMultiplier = 10f;
+    [SerializeField] private AudioSource footstepAudioSource;
+    [SerializeField] private AudioClip footstepClip;
+    [SerializeField] private float footstepInterval = 0.5f;
+
+    private float footstepTimer;
+
+    [SerializeField] private AudioClip jumpClip;
+    [SerializeField] private AudioSource jumpAudioSource;
+
+    [SerializeField] private AudioClip landingClip;
+    [SerializeField] private AudioSource landingAudioSource;
+
+    private bool wasGroundedLastFrame;
+
 
     [Header("Jumping")]
     public float jumpForce = 5f;
@@ -129,6 +143,21 @@ public class PlayerMovement : MonoBehaviour
         {
             //Debug.Log("raycast hit");
         }
+        MyInput();
+        ControlDrag();
+        ControlSpeed();
+        HandleFootsteps();
+
+        if (!wasGroundedLastFrame && isGrounded)
+        {
+            // Игрок только что приземлился
+            if (landingAudioSource != null && landingClip != null)
+            {
+                landingAudioSource.PlayOneShot(landingClip);
+            }
+        }
+
+        wasGroundedLastFrame = isGrounded;
     }
     private void FixedUpdate()
     {
@@ -140,6 +169,66 @@ public class PlayerMovement : MonoBehaviour
             SmoothUncrouch();
         }
     }
+
+    private void HandleFootsteps()
+    {
+        bool isMoving = horizontalMovement != 0 || verticalMovement != 0;
+
+        if (isGrounded && isMoving)
+        {
+            if (!footstepAudioSource.isPlaying)
+            {
+                footstepAudioSource.clip = footstepClip;
+                footstepAudioSource.loop = true;
+                footstepAudioSource.Play();
+            }
+        }
+        else
+        {
+            if (footstepAudioSource.isPlaying)
+            {
+                footstepAudioSource.Stop();
+            }
+        }
+    }
+
+    public void Crouch()
+    {
+        if (!isCrouching)
+        {
+            playerCollider.height = crouchHeight;
+            playerCollider.center = new Vector3(0, crouchColliderCenterOffsetY, 0);
+            cameraPosition.transform.localPosition = new Vector3(0, crouchCameraOffsetY, 0);
+            isCrouching = true;
+            isUncrouching = false;
+
+            // ЗАМЕДЛЯЕМ ЗВУК ШАГОВ
+            if (footstepAudioSource != null)
+            {
+                footstepAudioSource.pitch = 0.6f;
+            }
+        }
+    }
+
+    public void Uncrouch()
+    {
+        if (isCrouching)
+        {
+            if (CanUncrouch())
+            {
+                isUncrouching = true;
+
+                // ВОЗВРАЩАЕМ НОРМАЛЬНУЮ СКОРОСТЬ ЗВУКА
+                if (footstepAudioSource != null)
+                {
+                    footstepAudioSource.pitch = 1.0f;
+                }
+            }
+        }
+    }
+
+
+
 
     void MyInput()
     {
@@ -174,8 +263,15 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+
+            // Воспроизводим звук прыжка
+            if (jumpAudioSource != null && jumpClip != null)
+            {
+                jumpAudioSource.PlayOneShot(jumpClip);
+            }
         }
     }
+
 
     public bool CanUncrouch()
     {
@@ -185,28 +281,7 @@ public class PlayerMovement : MonoBehaviour
         return !cantUncrouch;
     }
 
-    public void Crouch()
-    {
-        if (!isCrouching)
-        {
-            playerCollider.height = crouchHeight;
-            playerCollider.center = new Vector3(0, crouchColliderCenterOffsetY, 0);
-            cameraPosition.transform.localPosition = new Vector3(0, crouchCameraOffsetY, 0);
-            isCrouching = true;
-            isUncrouching = false;
-        }
-    }
-
-    public void Uncrouch()
-    {
-        if (isCrouching) 
-        {
-            if (CanUncrouch())
-            {
-                isUncrouching = true;
-            }
-        }
-    }
+    
     
     void SmoothUncrouch()
     {

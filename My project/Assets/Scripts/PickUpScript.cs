@@ -13,6 +13,11 @@ public class PickUpScript : MonoBehaviour
     public float pickUpRange = 5f;
     private float rotationSensitivity = 1f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip pickUpClip;
+    [SerializeField] private AudioClip dropOrThrowClip;
+
     private GameObject heldObj;
     private Rigidbody heldObjRb;
     private PlayerLook lookScript;
@@ -73,12 +78,20 @@ public class PickUpScript : MonoBehaviour
         heldObj.transform.parent = holdPos;
         heldObj.layer = holdLayer;
         Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
+        if (audioSource != null && pickUpClip != null)
+        {
+            audioSource.PlayOneShot(pickUpClip);
+        }
     }
 
     void DropObject()
     {
         ResetObjectPhysics();
         heldObj = null;
+        if (audioSource != null && dropOrThrowClip != null)
+        {
+            audioSource.PlayOneShot(dropOrThrowClip);
+        }
     }
 
     void ThrowObject()
@@ -86,6 +99,10 @@ public class PickUpScript : MonoBehaviour
         ResetObjectPhysics();
         heldObjRb.AddForce(transform.forward * throwForce);
         heldObj = null;
+        if (audioSource != null && dropOrThrowClip != null)
+        {
+            audioSource.PlayOneShot(dropOrThrowClip);
+        }
     }
 
     void ResetObjectPhysics()

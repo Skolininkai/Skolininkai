@@ -2,6 +2,9 @@ using System.Security;
 using System.Text.RegularExpressions;
 using NUnit.Framework.Internal;
 using UnityEngine;
+using System.Collections;
+
+
 
 public class Buttons : MonoBehaviour
 {
@@ -67,6 +70,19 @@ public class Buttons : MonoBehaviour
     public Animator ButtonAnimator3;
     public Animator ButtonAnimator4;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip defaultButtonClickClip;   
+    [SerializeField] private AudioClip resetButtonClickClip;
+    [SerializeField] private AudioSource pillarMoveAudioSource;
+    [SerializeField] private AudioClip pillarMoveClip;
+
+    [Header("Sound")]
+    public AudioSource platformAudioSource;
+    private bool platformIsMoving = false;
+    
+    
+
     public void HandleButtonInteraction(GameObject button)
     {
         for (int i = 0; i < sphereButtons.Length; i++)
@@ -119,15 +135,47 @@ public class Buttons : MonoBehaviour
     
     public void UpdatePillarPositions()
     {
+        bool anyPillarMoving = false;
+
         for (int i = 0; i < pillars.Length; i++)
         {
+            Vector3 currentPos = pillars[i].transform.localPosition;
+            Vector3 targetPos = targetPositions[i];
+
+            float distance = Vector3.Distance(currentPos, targetPos);
+            if (distance > 0.01f) // платформа реально движется
+            {
+                anyPillarMoving = true;
+            }
+
             pillars[i].transform.localPosition = Vector3.Lerp(
-                pillars[i].transform.localPosition,
-                targetPositions[i],
+                currentPos,
+                targetPos,
                 moveSpeed * Time.deltaTime
             );
         }
+
+        // Обработка звука движения
+        if (anyPillarMoving)
+        {
+            if (!platformIsMoving)
+            {
+                platformIsMoving = true;
+                platformAudioSource.Play();
+            }
+        }
+        else
+        {
+            if (platformIsMoving)
+            {
+                platformIsMoving = false;
+                StartCoroutine(FadeOutSound()); // или StartCoroutine(FadeOutSound());
+            }
+        }
     }
+
+    
+
     
     public void UpdateButtonEffects()
     {
@@ -145,6 +193,20 @@ public class Buttons : MonoBehaviour
                 }
             }
         }
+    }
+    
+    private IEnumerator FadeOutSound(float duration = 0.5f)
+    {
+        float startVolume = platformAudioSource.volume;
+
+        while (platformAudioSource.volume > 0)
+        {
+            platformAudioSource.volume -= startVolume * Time.deltaTime / duration;
+            yield return null;
+        }
+
+        platformAudioSource.Stop();
+        platformAudioSource.volume = startVolume;
     }
     
     public void UpdateButtonInteraction()
@@ -175,6 +237,18 @@ public class Buttons : MonoBehaviour
     {
         buttonEffectTimers[buttonIndex] = pressEffectDuration;
         sphereButtons[buttonIndex].GetComponent<Renderer>().material = pressedMaterial;
+
+        if (audioSource != null)
+        {
+            if (buttonIndex == 3 && resetButtonClickClip != null)
+            {
+                audioSource.PlayOneShot(resetButtonClickClip);
+            }
+            else if (defaultButtonClickClip != null)
+            {
+                audioSource.PlayOneShot(defaultButtonClickClip);
+            }   
+        }
 
         switch (buttonIndex)
         {
@@ -230,7 +304,10 @@ public class Buttons : MonoBehaviour
     
     public void ApplyMovements(Vector3[] verticalMovements, Vector3[] horizontalMovements)
     {
-        
+        if (pillarMoveAudioSource != null && pillarMoveClip != null)
+        {
+            pillarMoveAudioSource.PlayOneShot(pillarMoveClip);
+        }
         for (int i = 0; i < pillars.Length; i++)
         {
             string pillarType = CheckPillarType(pillars[i]);
@@ -243,7 +320,10 @@ public class Buttons : MonoBehaviour
 
                 if (newVerticalPosition.y <= maxHeight && newVerticalPosition.y >= minHeight)
                 {
-                    targetPositions[i] = newVerticalPosition;
+                    if (Vector3.Distance(targetPositions[i], newVerticalPosition) > 0.01f)
+                    {
+                        targetPositions[i] = newVerticalPosition;
+                    }
                 }
                 else
                 {
@@ -258,7 +338,10 @@ public class Buttons : MonoBehaviour
                 
                 if (newHorizontalPosition.z <= maxWidth && newHorizontalPosition.z >= minWidth)
                 {
-                    targetPositions[i] = newHorizontalPosition;
+                    if (Vector3.Distance(targetPositions[i], newHorizontalPosition) > 0.01f)
+                    {
+                        targetPositions[i] = newHorizontalPosition;
+                    }
                 }
                 else
                 {
