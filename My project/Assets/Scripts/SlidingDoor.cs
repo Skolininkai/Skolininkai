@@ -14,10 +14,21 @@ public class SlidingDoor : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip doorOpenSound;
 
+    [Header("Sound Interval Settings")]
+    public float soundStartTime = 0f;  // Время запуска звука (от начала звука)
+    public float soundDuration = 5f;   // Длительность звука, сколько проигрывать (секунд)
+
     void Start()
     {
         doorTransform = transform;
         closedPosition = doorTransform.position;
+
+        if (audioSource != null)
+        {
+            audioSource.clip = doorOpenSound;
+            audioSource.playOnAwake = false;
+            audioSource.loop = false;
+        }
     }
 
     public void OpenDoor()
@@ -32,10 +43,14 @@ public class SlidingDoor : MonoBehaviour
     {
         isOpening = true;
 
-        // 🔊 Проиграть звук, если задан
         if (audioSource != null && doorOpenSound != null)
         {
-            audioSource.PlayOneShot(doorOpenSound);
+            // Запускаем звук с нужного места
+            audioSource.time = soundStartTime;
+            audioSource.Play();
+
+            // Останавливаем звук через soundDuration секунд
+            StartCoroutine(StopSoundAfterDelay(soundDuration));
         }
 
         Vector3 startPos = doorTransform.position;
@@ -52,5 +67,14 @@ public class SlidingDoor : MonoBehaviour
         }
 
         doorTransform.position = targetPosition;
+    }
+
+    private IEnumerator StopSoundAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
     }
 }

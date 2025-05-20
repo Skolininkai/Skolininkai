@@ -43,6 +43,9 @@ public class AimGameManager : MonoBehaviour
     private bool gameFinished = false;
     public Timer timer;
 
+    [Header("Audio")]
+    public AudioSource shotSound; // сюда добавь звуковой эффект через инспектор
+
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -56,9 +59,6 @@ public class AimGameManager : MonoBehaviour
     {
         timer = FindFirstObjectByType<Timer>();
         timerText.text = $"{gameDuration:F1}";
-        // int minutes = Mathf.FloorToInt(gameDuration / 60);
-        // int seconds = Mathf.FloorToInt(gameDuration % 60);
-        // timerText.text = $"{minutes:00}:{seconds:00}";
         scoreText.text = $"{poppedSpheres}|{totalSpheresToPop}";
     }
 
@@ -93,10 +93,7 @@ public class AimGameManager : MonoBehaviour
 
     void Update()
     {
-        if (!isMiniGameActive)
-        {
-            return;
-        }
+        if (!isMiniGameActive) return;
 
         currentTime -= Time.deltaTime;
 
@@ -107,6 +104,12 @@ public class AimGameManager : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Sphere"))
                 {
+                    // Проигрываем звук попадания
+                    if (shotSound != null)
+                    {
+                        shotSound.Play();
+                    }
+
                     Destroy(hit.collider.gameObject);
                     activeSpheres = Mathf.Max(0, activeSpheres - 1);
                     poppedSpheres++;
@@ -132,9 +135,6 @@ public class AimGameManager : MonoBehaviour
         }
 
         timerText.text = $"{currentTime:F1}";
-        // int minutes = Mathf.FloorToInt(currentTime / 60);
-        // int seconds = Mathf.FloorToInt(currentTime % 60);
-        // timerText.text = $"{minutes:00}:{seconds:00}";
         scoreText.text = $"{poppedSpheres}|{totalSpheresToPop}";
         Debug.Log(timer.totalTime);
     }

@@ -7,25 +7,30 @@ public class PlayerPickup : MonoBehaviour
     public Transform holdPoint;
     private GameObject heldObject;
 
-    public PlayerAbilities abilities;  
+    public PlayerAbilities abilities;
+
+    [Header("Sound Settings")]
+    public AudioSource audioSource;
+    public AudioClip pickupSound;
+    public AudioClip dropSound;
 
     void Update()
     {
         if (Input.GetKeyDown(pickupKey))
         {
             Debug.Log("Trying to pickup object");
-            Debug.Log("Current ability = "+ abilities.currentAbility);
+            Debug.Log("Current ability = " + abilities.currentAbility);
             if (heldObject == null)
             {
                 TryPickup();
             }
             else
-            {  
+            {
                 DropObject();
             }
         }
 
-        if(abilities.currentAbility == PlayerAbilities.Ability.WalkThroughHotObjects)
+        if (abilities.currentAbility == PlayerAbilities.Ability.WalkThroughHotObjects)
         {
             DropObject();
         }
@@ -41,13 +46,19 @@ public class PlayerPickup : MonoBehaviour
             if (hit.collider.CompareTag("Heavy"))
             {
                 Debug.Log("Objektas atitinka heavy klase");
-                // �ia kreipiam�s � abilities
+                // �ia kreipiam�s � abilities
                 if (abilities.currentAbility == PlayerAbilities.Ability.LiftHeavyObjects)
                 {
                     heldObject = hit.collider.gameObject;
                     heldObject.GetComponent<Rigidbody>().isKinematic = true;
                     heldObject.transform.position = holdPoint.position;
                     heldObject.transform.parent = holdPoint;
+
+                    // Проигрываем звук поднятия
+                    if (audioSource != null && pickupSound != null)
+                    {
+                        audioSource.PlayOneShot(pickupSound);
+                    }
                 }
                 else
                 {
@@ -63,6 +74,13 @@ public class PlayerPickup : MonoBehaviour
         {
             heldObject.GetComponent<Rigidbody>().isKinematic = false;
             heldObject.transform.parent = null;
+
+            // Проигрываем звук отпускания
+            if (audioSource != null && dropSound != null)
+            {
+                audioSource.PlayOneShot(dropSound);
+            }
+
             heldObject = null;
         }
     }

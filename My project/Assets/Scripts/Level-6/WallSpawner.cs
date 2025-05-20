@@ -9,20 +9,33 @@ public class WallSpawner : MonoBehaviour
     {
         public GameObject prefab;
         public Vector3 spawnOffset;
-        public Vector3 spawnRotation; // Adjust rotations per-prefab in Inspector
+        public Vector3 spawnRotation;
+        // public AudioClip moveSound; // Можно добавить
     }
 
     [Header("Settings")]
-    public List<WallConfig> wallConfigs = new List<WallConfig>(); // Replace wallPrefabs with this
+    public List<WallConfig> wallConfigs = new List<WallConfig>();
     public Transform startPoint;
     public Transform endPoint;
     public float moveSpeed = 5f;
     public float spawnInterval = 2f;
 
+    [Header("Sound Settings")]
+    public Transform playerTransform; // Укажи здесь игрока
+    public AudioSource playerAudioSource; // Общий AudioSource на игроке, с цикличным звуком движения стены
+    public float maxVolume = 1f;
+    public float maxHearingDistance = 15f; // Максимальное расстояние, на котором слышен звук
+
     private bool isSpawning = true;
 
     void Start()
     {
+        if (playerAudioSource != null)
+        {
+            playerAudioSource.loop = true;
+            playerAudioSource.volume = 0f;
+            playerAudioSource.Play();
+        }
         StartCoroutine(SpawnWallsRoutine());
     }
 
@@ -35,37 +48,33 @@ public class WallSpawner : MonoBehaviour
         {
             doorObj.GetComponent<SlidingDoor>().OpenDoor();
         }
+        if (playerAudioSource != null)
+        {
+            playerAudioSource.Stop();
+        }
     }
 
     IEnumerator SpawnWallsRoutine()
     {
         while (isSpawning)
         {
-            // Pick a random wall configuration
             WallConfig config = wallConfigs[Random.Range(0, wallConfigs.Count)];
-            Vector3 spawnPosition = startPoint.position + 
-                                startPoint.rotation * config.spawnOffset;
-            //Debug.Log($"Spawning wall at: {spawnPosition}");
+            Vector3 spawnPosition = startPoint.position +
+                                    startPoint.rotation * config.spawnOffset;
             Quaternion rotation = Quaternion.Euler(config.spawnRotation);
-            
-            // Instantiate with custom rotation
-            GameObject newWall = Instantiate(
-                config.prefab,
-                spawnPosition,
-                rotation // Use the prefab's defined rotation
-            );
+
+            GameObject newWall = Instantiate(config.prefab, spawnPosition, rotation);
 
             Vector3 endPosition = endPoint.position + startPoint.rotation * config.spawnOffset;
 
-            //Debug.Log($"Wall actual position: {newWall.transform.position}");
             StartCoroutine(MoveWallRoutine(newWall.transform, endPosition));
+
             yield return new WaitForSeconds(spawnInterval);
         }
     }
 
     IEnumerator MoveWallRoutine(Transform wall, Vector3 endPos)
     {
-        // (Same as before)
         while (Vector3.Distance(wall.position, endPos) > 0.1f && isSpawning)
         {
             wall.position = Vector3.MoveTowards(
@@ -73,8 +82,35 @@ public class WallSpawner : MonoBehaviour
                 endPos,
                 moveSpeed * Time.deltaTime
             );
+
+            UpdateSoundVolume(wall.position);
+
             yield return null;
         }
+
         Destroy(wall.gameObject);
+
+        // После удаления стены обновим громкость (чтобы звук уменьшился, если больше нет стен рядом)
+        UpdateSoundVolume(null);
+    }
+
+    void UpdateSoundVolume(Vector3? wallPosition)
+    {
+        if (playerAudioSource == null || playerTransform == null) return;
+
+        float targetVolume = 0f;
+
+        if (wallPosition.HasValue)
+        {
+            float dist = Vector3.Distance(playerTransform.position, wallPosition.Value);
+            if (dist <= maxHearingDistance)
+            {
+                // Чем ближе стена — тем громче (линейно)
+                targetVolume = maxVolume * (1f - dist / maxHearingDistance);
+            }
+        }
+
+        // Плавно меняем громкость
+        playerAudioSource.volume = Mathf.Lerp(playerAudioSource.volume, targetVolume, Time.deltaTime * 3f);
     }
 }
