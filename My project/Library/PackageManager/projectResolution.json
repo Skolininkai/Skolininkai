@@ -1,18 +1,18 @@
 {
   "context": {
-    "projectPath": "C:/Users/osteja/Desktop/skola/Skolininkai/My project/Packages",
+    "projectPath": "C:/Users/benas/Documents/GitHub/Skolininkai/My project/Packages",
     "unityVersion": "6000.0.37f1"
   },
   "inputs": [
-    "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Packages\\manifest.json",
-    "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Packages\\packages-lock.json",
+    "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Packages\\manifest.json",
+    "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Packages\\packages-lock.json",
     "C:\\Program Files\\Unity\\Hub\\Editor\\6000.0.37f1\\Editor\\Data\\Resources\\PackageManager\\BuiltInPackages\\BuiltInPackagesCombined.sha1"
   ],
   "outputs": {
     "com.unity.2d.sprite@1.0.0": {
       "name": "com.unity.2d.sprite",
       "displayName": "2D Sprite",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.2d.sprite@072d7bd355e5",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.2d.sprite@072d7bd355e5",
       "fingerprint": "072d7bd355e55ee3ded20a6a52435a4f5fded0d8",
       "editorCompatibility": "2019.2.0a1",
       "version": "1.0.0",
@@ -22,7 +22,7 @@
     "com.unity.ai.navigation@2.0.5": {
       "name": "com.unity.ai.navigation",
       "displayName": "AI Navigation",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.ai.navigation@9f76b145f0a8",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.ai.navigation@9f76b145f0a8",
       "fingerprint": "9f76b145f0a8dd734ff2a4877f7f7edb83b7f62c",
       "editorCompatibility": "2023.2.0a18",
       "version": "2.0.5",
@@ -32,7 +32,7 @@
     "com.unity.collab-proxy@2.6.0": {
       "name": "com.unity.collab-proxy",
       "displayName": "Version Control",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.collab-proxy@001b54a8988a",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.collab-proxy@001b54a8988a",
       "fingerprint": "001b54a8988a14785c8e209d6c788bb15f9e58cf",
       "editorCompatibility": "2021.3.0f1",
       "version": "2.6.0",
@@ -42,7 +42,7 @@
     "com.unity.formats.fbx@5.1.3": {
       "name": "com.unity.formats.fbx",
       "displayName": "FBX Exporter",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.formats.fbx@db39de05b0db",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.formats.fbx@db39de05b0db",
       "fingerprint": "db39de05b0dbacefb3aa3035d97d497649e2e711",
       "editorCompatibility": "2020.3.0a1",
       "version": "5.1.3",
@@ -52,7 +52,7 @@
     "com.unity.ide.rider@3.0.31": {
       "name": "com.unity.ide.rider",
       "displayName": "JetBrains Rider Editor",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.ide.rider@7921be93db40",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.ide.rider@7921be93db40",
       "fingerprint": "7921be93db40ec070fcb01ed82d1c3df1bbdddcd",
       "editorCompatibility": "2019.2.6f1",
       "version": "3.0.31",
@@ -62,7 +62,7 @@
     "com.unity.ide.visualstudio@2.0.22": {
       "name": "com.unity.ide.visualstudio",
       "displayName": "Visual Studio Editor",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.ide.visualstudio@8140e851d83e",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.ide.visualstudio@8140e851d83e",
       "fingerprint": "8140e851d83e922ca2021b04a89519de94ebe38c",
       "editorCompatibility": "2019.4.25f1",
       "version": "2.0.22",
@@ -72,7 +72,7 @@
     "com.unity.inputsystem@1.12.0": {
       "name": "com.unity.inputsystem",
       "displayName": "Input System",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.inputsystem@920b46832575",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.inputsystem@920b46832575",
       "fingerprint": "920b46832575a5beecb201e0a4570b4984b7ec34",
       "editorCompatibility": "2019.4.0a1",
       "version": "1.12.0",
@@ -82,7 +82,7 @@
     "com.unity.multiplayer.center@1.0.0": {
       "name": "com.unity.multiplayer.center",
       "displayName": "Multiplayer Center",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.multiplayer.center@f502d8ac613f",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.multiplayer.center@f502d8ac613f",
       "fingerprint": "f502d8ac613fa076192423e73892fbd89eb4049b",
       "editorCompatibility": "6000.0.0a1",
       "version": "1.0.0",
@@ -92,7 +92,7 @@
     "com.unity.probuilder@6.0.4": {
       "name": "com.unity.probuilder",
       "displayName": "ProBuilder",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.probuilder@a2827f523e21",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.probuilder@a2827f523e21",
       "fingerprint": "a2827f523e21ea251861dac290125410ba4e560b",
       "editorCompatibility": "6000.0.0a1",
       "version": "6.0.4",
@@ -102,7 +102,7 @@
     "com.unity.render-pipelines.universal@17.0.3": {
       "name": "com.unity.render-pipelines.universal",
       "displayName": "Universal RP",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.render-pipelines.universal@15fef0f41df6",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.render-pipelines.universal@15fef0f41df6",
       "fingerprint": "15fef0f41df63b57e2797b4e2e5e8059e45eacd1",
       "editorCompatibility": "6000.0.0a1",
       "version": "17.0.3",
@@ -112,7 +112,7 @@
     "com.unity.test-framework@1.4.5": {
       "name": "com.unity.test-framework",
       "displayName": "Test Framework",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.test-framework@0a21eb82d95c",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.test-framework@0a21eb82d95c",
       "fingerprint": "0a21eb82d95cd331643a1e0ce4e8e9a5f18954c8",
       "editorCompatibility": "2019.4.0a10",
       "version": "1.4.5",
@@ -122,7 +122,7 @@
     "com.unity.timeline@1.8.7": {
       "name": "com.unity.timeline",
       "displayName": "Timeline",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.timeline@c58b4ee65782",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.timeline@c58b4ee65782",
       "fingerprint": "c58b4ee65782ad38338e29f7ee67787cb6998f04",
       "editorCompatibility": "2019.3.0a1",
       "version": "1.8.7",
@@ -132,7 +132,7 @@
     "com.unity.ugui@2.0.0": {
       "name": "com.unity.ugui",
       "displayName": "Unity UI",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.ugui@603b5c2e4e5a",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.ugui@603b5c2e4e5a",
       "fingerprint": "603b5c2e4e5a76409787d1f845212061e169767a",
       "editorCompatibility": "2019.2.0a1",
       "version": "2.0.0",
@@ -142,7 +142,7 @@
     "com.unity.visualscripting@1.9.5": {
       "name": "com.unity.visualscripting",
       "displayName": "Visual Scripting",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.visualscripting@1b53f46e931b",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.visualscripting@1b53f46e931b",
       "fingerprint": "1b53f46e931bea668e53f1feb0ac9138170c9455",
       "editorCompatibility": "2021.3.0a1",
       "version": "1.9.5",
@@ -424,7 +424,7 @@
     "com.unity.ext.nunit@2.0.5": {
       "name": "com.unity.ext.nunit",
       "displayName": "Custom NUnit",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.ext.nunit@60ef35ffd3cd",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.ext.nunit@60ef35ffd3cd",
       "fingerprint": "60ef35ffd3cd5e2f5c8887a4a4ca6148854cd092",
       "editorCompatibility": "2019.4.0a1",
       "version": "2.0.5",
@@ -434,7 +434,7 @@
     "com.unity.render-pipelines.core@17.0.3": {
       "name": "com.unity.render-pipelines.core",
       "displayName": "Core RP Library",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.render-pipelines.core@89eb3bdcd743",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.render-pipelines.core@89eb3bdcd743",
       "fingerprint": "89eb3bdcd743e8f493dab0dfcf09ae61877103a4",
       "editorCompatibility": "6000.0.0a1",
       "version": "17.0.3",
@@ -444,7 +444,7 @@
     "com.unity.shadergraph@17.0.3": {
       "name": "com.unity.shadergraph",
       "displayName": "Shader Graph",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.shadergraph@911117698220",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.shadergraph@911117698220",
       "fingerprint": "9111176982208cf007caa931c3cf2716ceec4632",
       "editorCompatibility": "6000.0.0a1",
       "version": "17.0.3",
@@ -454,7 +454,7 @@
     "com.unity.render-pipelines.universal-config@17.0.3": {
       "name": "com.unity.render-pipelines.universal-config",
       "displayName": "Universal RP Config",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.render-pipelines.universal-config@fa63c96d3e1a",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.render-pipelines.universal-config@fa63c96d3e1a",
       "fingerprint": "fa63c96d3e1af317d84d171cd6c0e0658ab159df",
       "editorCompatibility": "6000.0.0a1",
       "version": "17.0.3",
@@ -464,7 +464,7 @@
     "com.unity.settings-manager@2.0.1": {
       "name": "com.unity.settings-manager",
       "displayName": "Settings Manager",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.settings-manager@56a930affa1e",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.settings-manager@56a930affa1e",
       "fingerprint": "56a930affa1e4462d3595b5c19a1c2a4bf2015d2",
       "editorCompatibility": "2018.4.0a1",
       "version": "2.0.1",
@@ -474,7 +474,7 @@
     "com.autodesk.fbx@5.1.1": {
       "name": "com.autodesk.fbx",
       "displayName": "Autodesk FBX SDK for Unity",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.autodesk.fbx@5797ff6b31c7",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.autodesk.fbx@5797ff6b31c7",
       "fingerprint": "5797ff6b31c7c66189bffe1adc9cbf0ad5a9cbbf",
       "editorCompatibility": "2020.3.0a1",
       "version": "5.1.1",
@@ -484,7 +484,7 @@
     "com.unity.searcher@4.9.2": {
       "name": "com.unity.searcher",
       "displayName": "Searcher",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.searcher@90d011a70418",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.searcher@90d011a70418",
       "fingerprint": "90d011a70418fd5b0f4b8e86df39444d2af228dd",
       "editorCompatibility": "2019.1.0a1",
       "version": "4.9.2",
@@ -494,7 +494,7 @@
     "com.unity.burst@1.8.19": {
       "name": "com.unity.burst",
       "displayName": "Burst",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.burst@7a907cf5a459",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.burst@7a907cf5a459",
       "fingerprint": "7a907cf5a4591e4e25f4203e3be84f240058c34d",
       "editorCompatibility": "2020.3.0a1",
       "version": "1.8.19",
@@ -504,7 +504,7 @@
     "com.unity.mathematics@1.3.2": {
       "name": "com.unity.mathematics",
       "displayName": "Mathematics",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.mathematics@8017b507cc74",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.mathematics@8017b507cc74",
       "fingerprint": "8017b507cc74bf0a1dd14b18aa860569f807314d",
       "editorCompatibility": "2021.3.0a1",
       "version": "1.3.2",
@@ -514,7 +514,7 @@
     "com.unity.collections@2.5.1": {
       "name": "com.unity.collections",
       "displayName": "Collections",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.collections@56bff8827a7e",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.collections@56bff8827a7e",
       "fingerprint": "56bff8827a7ef6d44fcee4f36e558a74da89c1a0",
       "editorCompatibility": "2022.3.11f1",
       "version": "2.5.1",
@@ -524,7 +524,7 @@
     "com.unity.rendering.light-transport@1.0.1": {
       "name": "com.unity.rendering.light-transport",
       "displayName": "Unity Light Transport Library",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.rendering.light-transport@307bc27a498f",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.rendering.light-transport@307bc27a498f",
       "fingerprint": "307bc27a498fc9cd409bbd426c85d8dc7f140bc1",
       "editorCompatibility": "2023.3.0b1",
       "version": "1.0.1",
@@ -534,7 +534,7 @@
     "com.unity.nuget.mono-cecil@1.11.4": {
       "name": "com.unity.nuget.mono-cecil",
       "displayName": "Mono Cecil",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.nuget.mono-cecil@d6f9955a5d5f",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.nuget.mono-cecil@d6f9955a5d5f",
       "fingerprint": "d6f9955a5d5f84d45442ff1ad0fb694cc6e2fd62",
       "editorCompatibility": "2018.4.0a1",
       "version": "1.11.4",
@@ -544,7 +544,7 @@
     "com.unity.test-framework.performance@3.0.3": {
       "name": "com.unity.test-framework.performance",
       "displayName": "Performance testing API",
-      "resolvedPath": "C:\\Users\\osteja\\Desktop\\skola\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.test-framework.performance@fb0dc592af8b",
+      "resolvedPath": "C:\\Users\\benas\\Documents\\GitHub\\Skolininkai\\My project\\Library\\PackageCache\\com.unity.test-framework.performance@fb0dc592af8b",
       "fingerprint": "fb0dc592af8b524f1a06c50d7caf95552f1bcd2f",
       "editorCompatibility": "2020.3.0a1",
       "version": "3.0.3",

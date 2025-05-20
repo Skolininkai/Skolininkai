@@ -6,6 +6,11 @@ public class LevelManager : MonoBehaviour
     public Animator leverAnimator;
     public GameObject Lever;
 
+    void Start()
+    {
+        Hints.instance.ShowHint("Press the 3 buttons to maneuver over the pillars", 3);
+    }
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.E))

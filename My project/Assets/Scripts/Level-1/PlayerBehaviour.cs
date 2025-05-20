@@ -49,7 +49,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             characterController.enabled = true;
         }
-        
+        Hints.instance.ShowHint("Try pressing the Reset button to if you want to start over.", 3);
         Debug.Log("Player fell off and was reset to start position");
     }
 }
