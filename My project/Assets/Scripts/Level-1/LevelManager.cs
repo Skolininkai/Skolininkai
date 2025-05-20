@@ -4,6 +4,7 @@ using System.Collections;
 public class LevelManager : MonoBehaviour
 {
     public Animator leverAnimator;
+    public GameObject Lever;
 
     void Update()
     {
@@ -18,7 +19,7 @@ public class LevelManager : MonoBehaviour
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit, 5f))
+        if (Physics.Raycast(ray, out hit, 5f) && hit.collider.gameObject == Lever)
         {
             Debug.Log("Lever pressed.");
 

@@ -62,6 +62,10 @@ public class Buttons : MonoBehaviour
     public Material highlightedMaterial;
     public Material pressedMaterial;
     public float pressEffectDuration = 0.3f;
+    public Animator ButtonAnimator1;
+    public Animator ButtonAnimator2;
+    public Animator ButtonAnimator3;
+    public Animator ButtonAnimator4;
 
     public void HandleButtonInteraction(GameObject button)
     {
@@ -74,8 +78,8 @@ public class Buttons : MonoBehaviour
                     sphereButtons[i].GetComponent<Renderer>().material = highlightedMaterial;
                 }
                 currentlyHighlightedButton = sphereButtons[i];
-                
-                if (Input.GetMouseButtonDown(0))
+
+                if (Input.GetKeyDown(KeyCode.E))
                 {
                     Debug.Log($"Button{i} pressed.");
                     PressButton(i);
@@ -166,24 +170,28 @@ public class Buttons : MonoBehaviour
             }
         }
     }
-    
+
     public void PressButton(int buttonIndex)
     {
         buttonEffectTimers[buttonIndex] = pressEffectDuration;
         sphereButtons[buttonIndex].GetComponent<Renderer>().material = pressedMaterial;
-        
+
         switch (buttonIndex)
         {
             case 0:
-                ApplyMovements(button1VerticalMovements, button1HorizontalMovements);
+                ButtonAnimator1.SetTrigger("Press");
+                ApplyMovements(button1VerticalMovements, button1HorizontalMovements);   
                 break;
             case 1:
+                ButtonAnimator2.SetTrigger("Press");
                 ApplyMovements(button2VerticalMovements, button2HorizontalMovements);
                 break;
             case 2:
+                ButtonAnimator3.SetTrigger("Press");
                 ApplyMovements(button3VerticalMovements, button3HorizontalMovements);
                 break;
             case 3:
+                ButtonAnimator4.SetTrigger("Press");
                 ResetPillars();
                 break;
         }
