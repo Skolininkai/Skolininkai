@@ -23,6 +23,8 @@ public class WeighingPlate : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (!other.CompareTag("canPickUp")) return;
+
         Rigidbody rb = other.attachedRigidbody;
         if (rb != null && !objectsOnPlate.Contains(rb))
         {
@@ -39,6 +41,8 @@ public class WeighingPlate : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
+        if (!other.CompareTag("canPickUp")) return;
+
         Rigidbody rb = other.attachedRigidbody;
         if (rb != null && objectsOnPlate.Contains(rb))
         {

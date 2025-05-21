@@ -36,6 +36,11 @@ public class ScaleManager : MonoBehaviour
                 Debug.Log("✅ Весы в равновесии");
                 PlaySound(balancedSound);
                 lastState = "balanced";
+                GameObject doorObj = GameObject.FindWithTag("Door");
+                if (doorObj != null)
+                {
+                    doorObj.GetComponent<SlidingDoor>().OpenDoor();
+                }
             }
             else if (diff > 0 && lastState != "left")
             {
