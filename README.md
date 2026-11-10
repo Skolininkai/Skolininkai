@@ -27,3 +27,4 @@ This project is maintained and contributed by:
 * [oressa](https://github.com/oressa)
 * [negative-s](https://github.com/negative-s)
 * [TheVankom](https://github.com/thevankom)
+* [Rokiz12](https://github.com/Rokiz12)
